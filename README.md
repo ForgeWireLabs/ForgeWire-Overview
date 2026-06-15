@@ -287,7 +287,7 @@ Experimental work is expected to move through isolated implementation, baseline 
 
 ForgeWire developed through several generations:
 
-**SCOUT → SCOUT-2 → SCOUT-3 → ATLAS → PhrenForge → ForgeWire**
+**SCOUT → SCOUT-2 → ATLAS → PhrenForge → ForgeWire**
 
 Across those generations:
 
