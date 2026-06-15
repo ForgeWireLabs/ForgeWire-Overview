@@ -2,7 +2,7 @@
 
 ## Where the Mind Is Forged
 
-**Your intelligence. Your rules. Your data.**
+**Your intelligence. Your data. Your hardware. Your rules!!**
 
 > **Private development · Public release coming later**
 
