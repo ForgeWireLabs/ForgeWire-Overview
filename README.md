@@ -16,6 +16,10 @@ ForgeWire now brings together models, personas, agents, tools, skills, memory, k
 
 It is being developed privately by **Jeremy Shows** through [ForgeWire Labs](https://github.com/ForgeWireLabs).
 
+ForgeWire is a **largely solo, human-led, deeply AI-assisted engineering and research effort**. AI systems contribute materially to research, implementation, testing, review, documentation, and technical exploration. Jeremy works hands-on across those same activities: researching alongside the agents, choosing runtimes, languages, patterns, system boundaries, and workflows, debugging failures, resolving architectural and implementation deadlocks, integrating the resulting work, and deciding what is accepted into the system.
+
+That distinction matters. ForgeWire is neither a claim that one person wrote every line unaided nor a project delegated wholesale to autonomous agents. It is an experiment in what serious software and systems research can look like when one engineer works continuously with multiple AI systems as collaborators and force multipliers while retaining technical responsibility for the whole.
+
 ---
 
 ## Why ForgeWire Exists
@@ -239,24 +243,29 @@ The intended relationship is collaboration under defined authority, not uncondit
 
 ---
 
-## Built With Agents
+## How ForgeWire Is Built
 
-ForgeWire is also used to help develop ForgeWire.
+ForgeWire is also used to help develop ForgeWire, but the development model is broader than agent orchestration.
 
-Its repositories contain structured instructions, ownership boundaries, roadmaps, audits, validation tools, and scoped project memory that allow coding agents to perform bounded engineering work.
+Jeremy researches and engineers directly alongside multiple AI systems. The working loop routinely includes human and agent contributions to:
 
-Within those boundaries, agents can:
+* technical research and literature review
+* architecture exploration and system decomposition
+* runtime, language, storage, transport, and framework selection
+* implementation and refactoring
+* debugging and root-cause analysis
+* test design, validation, benchmarking, and adversarial review
+* documentation, work-item design, and release evidence
 
-* recover architectural context
-* locate the rules governing their scope
-* inspect previous decisions
-* implement defined work
-* run validation
-* update project state
-* preserve useful context
-* escalate decisions beyond their authority
+The agents are not treated as an unquestioned implementation layer. Their proposals are compared, challenged, tested, redirected, or rejected. When an implementation loop stalls on symptom-level fixes, the human may supply the missing abstraction or root-cause correction and send the agents back through implementation and validation.
 
-This development workflow reflects the same systems-first position as the product: model capability becomes dependable only when surrounded by state, boundaries, validation, and recovery.
+The repositories provide structured instructions, ownership boundaries, work items, decisions, audits, validation tools, and scoped project memory so that agent work can remain durable and reviewable instead of disappearing with a chat session.
+
+Within those boundaries, agents can recover architectural context, inspect previous decisions, implement defined work, run validation, preserve evidence, and escalate decisions beyond their authority. The human remains part of the same technical loop rather than sitting outside it as a prompt-only operator.
+
+ForgeWire therefore makes no claim of unaided authorship. It builds on open research, open-source software, commercial AI systems, and decades of systems engineering. It also does not describe the work as merely "AI-generated." The architecture, synthesis, technology choices, corrections, integration, and acceptance are the product of an ongoing human-led engineering process in which AI systems make substantial contributions.
+
+This workflow reflects the same systems-first position as the product: model capability becomes dependable only when surrounded by state, boundaries, validation, evidence, and human judgment.
 
 ---
 
@@ -303,13 +312,15 @@ ForgeWire is not a clean-room concept assembled for a future launch. It is the c
 
 ---
 
-## Related Public Work
+## Related Work
 
-### [ForgeWire Fabric](https://github.com/ForgeWireLabs/forgewire-fabric)
+### ForgeWire Fabric · **Private Development**
 
-The public distributed execution and control-plane component associated with ForgeWire.
+ForgeWire Fabric is the distributed execution and control-plane subsystem associated with ForgeWire.
 
 Fabric focuses on signed task dispatch, capability-scoped runners, policy gates, structured events, distributed state, audit, replay, and federated transport.
+
+Current Fabric source and current/future ForgeWire Labs development are **private and proprietary, not open source**, unless a specific distribution is explicitly licensed otherwise. Historical versions or copies that ForgeWire Labs previously distributed under Apache License 2.0 remain under the license terms that accompanied those specific versions or copies; the current status does not revoke rights already granted.
 
 ### [SCOUT-2](https://github.com/ForgeWireLabs/SCOUT-2)
 
@@ -362,7 +373,9 @@ Models, providers, runtimes, transports, databases, interfaces, and compute subs
 
 ## Created By
 
-ForgeWire is designed and developed by **Jeremy Shows** through [ForgeWire Labs](https://github.com/ForgeWireLabs).
+ForgeWire is a **largely solo, human-led, deeply AI-assisted software engineering and research effort** led by **Jeremy Shows** through [ForgeWire Labs](https://github.com/ForgeWireLabs).
+
+AI systems contribute materially across research, implementation, testing, review, documentation, and exploration. Jeremy works hands-on across the same lifecycle and retains responsibility for technical decisions, architecture, runtime/language/pattern selection, system boundaries, debugging and root-cause correction, integration, validation, and final technical acceptance.
 
 > Most assistants optimize for conversation.
 >
