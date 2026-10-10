@@ -246,9 +246,9 @@ A public release should include supported-platform and installation guidance, se
 
 ## How ForgeWire is built
 
-ForgeWire is a human-led, deeply AI-assisted engineering and research effort led by [Jeremy Shows](https://github.com/JeremyShows) through [ForgeWire Labs](https://github.com/ForgeWireLabs). AI systems contribute materially across research, architecture exploration, implementation, debugging, testing, review, and documentation. Jeremy works directly across that lifecycle, makes technical and integration decisions, challenges proposed solutions, and retains responsibility for validation and acceptance.
+ForgeWire is designed and developed by [Jeremy Shows](https://github.com/JeremyShows) through [ForgeWire Labs](https://github.com/ForgeWireLabs). Jeremy defines the problems, designs the architecture, sets engineering constraints, and drives implementation, integration, debugging, and validation. The work draws on a multidisciplinary background in fabrication, mechanical systems, IT, and software development, with an emphasis on how systems behave under real operating constraints.
 
-The work draws on open research, open-source software, commercial AI tools, and established systems engineering. It does not claim unaided authorship or delegate technical responsibility wholesale to autonomous agents.
+AI models and coding agents are integral to that engineering workflow. Jeremy uses them extensively for research, design exploration, implementation, testing, review, and documentation, directing scoped work, challenging assumptions, and reconciling results across components. Technical decisions and acceptance remain his responsibility; proposed changes are evaluated through code review, tests, experiments, and observed system behavior.
 
 ## Technical direction
 
