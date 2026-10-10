@@ -1,0 +1,17 @@
+%% Mermaid source for fabric-dispatch.svg. This is a private architecture direction, not a released service.
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"18px","primaryColor":"#fff4d9","primaryTextColor":"#543b0b","primaryBorderColor":"#d49a31","lineColor":"#9a835c","secondaryColor":"#eaf4ff","tertiaryColor":"#f3f6f8","background":"#ffffff"}}}%%
+flowchart TD
+  Operator["Operator / application"] -->|authorize bounded task| Dispatch["Dispatch intent<br/>identity · scope · policy"]
+  Dispatch --> Envelope["Signed authority envelope<br/>task + capability context"]
+  Envelope --> Transport["Authenticated transport<br/>Fabric direction · private"]
+  Transport --> Verify["Runner verifies identity<br/>and requested authority"]
+  Verify -->|permitted| Execute["Execute bounded work<br/>on authorized machine"]
+  Verify -->|reject / unavailable| Deny["Visible denial or failure"]
+  Execute --> Events["Structured result / event"]
+  Events --> Review["Return for application<br/>and operator review"]
+  Deny --> Review
+  Review -. "additional product evidence required" .-> Audit["No public deployment<br/>or operator setup"]
+  classDef private fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  classDef result fill:#f3f6f8,stroke:#7a8b96,color:#34434b;
+  class Operator,Dispatch,Envelope,Transport,Verify,Execute,Deny private;
+  class Events,Review,Audit result;

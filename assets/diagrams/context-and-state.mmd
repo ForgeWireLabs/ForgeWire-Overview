@@ -1,0 +1,24 @@
+%% Mermaid source for context-and-state.svg. Store selection and feature availability are configuration-dependent.
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"18px","primaryColor":"#eaf4ff","primaryTextColor":"#12324a","primaryBorderColor":"#4c8cb5","lineColor":"#64839a","secondaryColor":"#fff4d9","tertiaryColor":"#f3f6f8","background":"#ffffff"}}}%%
+flowchart LR
+  Person["Person"] --> Conversation["Conversation service"]
+  Conversation --> STM["Short-term context service"]
+  Conversation --> History["Conversation repository<br/>configured backend"]
+  STM --> Context["Request context"]
+  Context --> Knowledge["Knowledge-base service<br/>when retrieval is configured"]
+  Knowledge --> KStore["Knowledge / index storage"]
+  Knowledge --> Context
+  Context --> Model["Provider / model"]
+  Model --> Conversation
+  Task["Task workflows"] --> TStore["Task repository"]
+  Job["Background work"] --> JStore["Job repository"]
+  Conversation --> Bus["Async message bus<br/>in-process messages"]
+  Task --> Bus
+  Job --> Bus
+  Conversation -. "separate local notification path" .-> Local["Synchronous local notifications"]
+  classDef current fill:#eaf4ff,stroke:#4c8cb5,color:#12324a,stroke-width:1.5px;
+  classDef optional fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  classDef store fill:#f3f6f8,stroke:#7a8b96,color:#34434b;
+  class Person,Conversation,STM,Context,Model,Task,Job,Bus,Local current;
+  class Knowledge optional;
+  class History,KStore,TStore,JStore store;

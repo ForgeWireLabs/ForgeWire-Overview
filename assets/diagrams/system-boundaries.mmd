@@ -1,0 +1,28 @@
+%% Mermaid source for system-boundaries.svg. Blue = current code path; amber/dashed = evolving boundary.
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"18px","primaryColor":"#eaf4ff","primaryTextColor":"#12324a","primaryBorderColor":"#4c8cb5","lineColor":"#64839a","secondaryColor":"#fff4d9","tertiaryColor":"#f3f6f8","background":"#ffffff"}}}%%
+flowchart LR
+  Person["Person or operator"] --> GTK["GTK desktop shell<br/>current user path"]
+  Person --> HTTP["HTTP server routes<br/>internal surface"]
+  GTK --> App["Application composition<br/>private runtime"]
+  HTTP --> App
+  subgraph Runtime["ForgeWire Runtime Core · conceptual boundary across packages"]
+    App --> Services["Application services<br/>personas · providers · chat<br/>knowledge · tasks · jobs"]
+    Services --> Provider["Configured provider and model<br/>resolution"]
+    Services --> Tooling["Shared tooling service<br/>tools and skill metadata"]
+    Services --> Graph["Graph execution path<br/>current private runtime"]
+    Services --> State["Configured service/repository paths<br/>conversation · task · job · knowledge"]
+    Services --> MessageBus["Async message bus<br/>in-process messaging"]
+    Services --> LocalEvents["Local event notifications<br/>separate synchronous path"]
+    subgraph Substrate["Replaceable runtime substrates"]
+    ReplaceableBus["Message substrate"]
+    ReplaceableExecution["Execution substrate"]
+    end
+    Graph --> Tooling
+    Tooling --> MessageBus
+    MessageBus -. "replaceable implementation" .-> ReplaceableBus
+    Graph -. "runtime transition in progress" .-> ReplaceableExecution
+  end
+  classDef current fill:#eaf4ff,stroke:#4c8cb5,color:#12324a,stroke-width:1.5px;
+  classDef evolving fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  class Person,GTK,HTTP,App,Services,Provider,Tooling,Graph,State,MessageBus,LocalEvents,ReplaceableBus,ReplaceableExecution current;
+  class Runtime,Substrate evolving;

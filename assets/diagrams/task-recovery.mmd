@@ -1,0 +1,30 @@
+%% Mermaid source for task-recovery.svg. Recovery/escalation branches are design goals, not a shipped guarantee.
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"18px","primaryColor":"#eaf4ff","primaryTextColor":"#12324a","primaryBorderColor":"#4c8cb5","lineColor":"#64839a","secondaryColor":"#fff4d9","tertiaryColor":"#f3f6f8","background":"#ffffff"}}}%%
+flowchart TB
+  subgraph Current["NOW"]
+    direction LR
+    Workflow["Configured workflow"] --> Record["Task record"]
+    Record --> Review["Person reviews task"]
+    Review --> Decide{"Follow available action,<br/>stop, or ask operator?"}
+  end
+  subgraph Direction["NEXT"]
+    direction LR
+    Run["Bounded execution step"] --> Outcome{"Step outcome"}
+    Outcome -->|success| Result["Return result for review"]
+    Outcome -->|failure| Failure["Expose failure state"]
+    Failure -. "only an allowed recovery path" .-> Recover["Bounded retry or alternate path"]
+    Recover -. "if safe and configured" .-> Run
+    Failure --> Escalate["Stop and escalate to operator"]
+  end
+  Decide -. "when workflow invokes execution" .-> Run
+  Decide -->|stop / review| Human["Human decision and follow-up"]
+  Result --> Human
+  Escalate --> Human
+  classDef current fill:#eaf4ff,stroke:#4c8cb5,color:#12324a,stroke-width:1.5px;
+  classDef evolving fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  classDef human fill:#e9f7f0,stroke:#57a77e,color:#214a35;
+  class Workflow,Record,Review,Decide current;
+  class Run,Outcome,Failure,Recover,Escalate evolving;
+  class Result,Human human;
+  style Current fill:#f7fbff,stroke:#8bb5d0,stroke-width:1.5px;
+  style Direction fill:#fffaf0,stroke:#d49a31,stroke-dasharray:5 4;
