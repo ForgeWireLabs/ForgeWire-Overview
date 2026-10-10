@@ -1,0 +1,57 @@
+%% Conversation history, short-term context, memory libraries, knowledge, workflow state, and events have distinct owners.
+%% Long-term memory components and retrieval backends are not available in every runtime configuration.
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"18px","primaryColor":"#eaf4ff","primaryTextColor":"#12324a","primaryBorderColor":"#4c8cb5","lineColor":"#64839a","background":"#ffffff"},"flowchart":{"nodeSpacing":28,"rankSpacing":40,"curve":"linear"}}}%%
+flowchart LR
+  subgraph ConversationPath["Conversation context path"]
+    direction LR
+    Person["Person"] --> Conversation["Conversation service"]
+    Conversation --> Context["Request context<br/>history + current turn"]
+    Context --> Provider["Configured provider / model"]
+    Conversation <--> History[("Conversation repository<br/>configured backend")]
+  end
+
+  subgraph ContextSources["Additional context sources · selected by configuration and caller"]
+    direction LR
+    ShortTerm["ShortTermMemoryService<br/>composed helper"]
+    Knowledge["KnowledgeBaseService<br/>retrieval when configured"] --> KStore[("Knowledge store / index")]
+    Memory["Advanced memory services<br/>long-term · episodic · working<br/>library composition varies"]
+    Universal["One automatic memory path<br/>across all conversations"]
+    Memory -. "not established" .-> Universal
+  end
+  ShortTerm -. "when supplied" .-> Context
+  Knowledge -. "retrieved context" .-> Context
+
+  subgraph OperationalState["Operational and shared workflow state"]
+    direction LR
+    Tasks["Task service / workflows"] --> TStore[("Task repository")]
+    Jobs["Job service / scheduler"] --> JStore[("Job repository")]
+    Tasks --> Board["Blackboard shared state"]
+    Board --> BoardStore[("Memory or SQLite adapter<br/>selected by configuration")]
+  end
+
+  Conversation --> Bus["Forge Core Bus<br/>in-process async events"]
+  Tasks --> Bus
+  Jobs --> Bus
+  Conversation -. "separate synchronous local notification" .-> Notify["EventDispatcherRegistry"]
+  Tasks -. "separate synchronous local notification" .-> Notify
+
+  subgraph Legend["Diagram key"]
+    direction LR
+    L1["Existing"] --- L2["Optional / configuration-dependent"] --- L3["Private implementation"] --- L4["Proposed / not universal"]
+  end
+
+  classDef existing fill:#eaf4ff,stroke:#4c8cb5,color:#12324a,stroke-width:1.5px;
+  classDef optional fill:#f2edff,stroke:#8063bf,color:#38255b,stroke-width:1.5px;
+  classDef private fill:#e4f4f0,stroke:#3c9182,color:#123f39,stroke-width:1.5px;
+  classDef proposed fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  class Person,Conversation,Context,Provider,History,Tasks,TStore,Jobs,JStore,Board,Bus,Notify existing;
+  class ShortTerm,Knowledge,KStore,Memory,BoardStore optional;
+  class Universal proposed;
+  classDef legendExisting fill:#eaf4ff,stroke:#4c8cb5,color:#12324a;
+  classDef legendOptional fill:#f2edff,stroke:#8063bf,color:#38255b;
+  classDef legendPrivate fill:#e4f4f0,stroke:#3c9182,color:#123f39;
+  classDef legendProposed fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  class L1 legendExisting;
+  class L2 legendOptional;
+  class L3 legendPrivate;
+  class L4 legendProposed;

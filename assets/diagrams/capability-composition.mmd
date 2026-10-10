@@ -1,0 +1,48 @@
+%% Personas carry identity and policy references; agents, tools, skills, and providers have separate roles.
+%% A shared end-to-end lifecycle across chat, tools, and delegated workflows remains in progress.
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"17px","primaryColor":"#eaf4ff","primaryTextColor":"#12324a","primaryBorderColor":"#4c8cb5","lineColor":"#64839a","background":"#ffffff"},"flowchart":{"nodeSpacing":30,"rankSpacing":42,"curve":"linear"}}}%%
+flowchart LR
+  Person["Person"] --> Request["Conversation request"]
+  Request --> Persona["Active persona<br/>persistent identity + policy references"]
+  Persona --> Resolve["Resolve persona policy<br/>identity · tool / skill grants"]
+  Request --> Provider["Configured provider / model<br/>replaceable adapter"]
+  Resolve --> Turn["Model turn"]
+  Provider --> Turn
+  Turn --> Response["Response for human review"]
+  Response --> Person
+
+  Turn -. "proposes bounded action" .-> Gate["ForgeWire capability / authority checks"]
+  Gate --> Tool["Tool<br/>one bounded operation"]
+  Tool --> ToolResult["Tool result"]
+  ToolResult --> Turn
+
+  Skill["Skill<br/>guidance / declared requirements"] -. "does not itself grant permission" .-> Resolve
+  Skill -. "may inform workflow" .-> Tool
+  SkillResolution["Dynamic skill resolution<br/>WI271 · proposed / not runtime"] -. "planned resolution" .-> Skill
+  Requirements["Typed capability vocabulary / routing<br/>WI283 · active contract work"] -. "cross-domain routing work" .-> Gate
+
+  Workflow["Configured workflow"] --> Agent["Delegated agent path<br/>used in some workflows"]
+  Agent --> AgentResult["Result returned to workflow"]
+  AgentResult --> Response
+  Agent -. "lifecycle convergence · WI224" .-> Lifecycle["Consistent run lifecycle<br/>across chat, tools, and agents"]
+
+  subgraph Legend["Diagram key"]
+    direction LR
+    L1["Existing"] --- L2["Optional / configuration-dependent"] --- L3["Private implementation"] --- L4["Proposed / in progress"]
+  end
+
+  classDef existing fill:#eaf4ff,stroke:#4c8cb5,color:#12324a,stroke-width:1.5px;
+  classDef optional fill:#f2edff,stroke:#8063bf,color:#38255b,stroke-width:1.5px;
+  classDef private fill:#e4f4f0,stroke:#3c9182,color:#123f39,stroke-width:1.5px;
+  classDef proposed fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  class Person,Request,Persona,Resolve,Turn,Response,Gate,Tool,ToolResult,Workflow,Agent,AgentResult existing;
+  class Provider,Skill optional;
+  class Lifecycle,SkillResolution,Requirements proposed;
+  classDef legendExisting fill:#eaf4ff,stroke:#4c8cb5,color:#12324a;
+  classDef legendOptional fill:#f2edff,stroke:#8063bf,color:#38255b;
+  classDef legendPrivate fill:#e4f4f0,stroke:#3c9182,color:#123f39;
+  classDef legendProposed fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  class L1 legendExisting;
+  class L2 legendOptional;
+  class L3 legendPrivate;
+  class L4 legendProposed;
