@@ -20,7 +20,7 @@
 
 > **Private development.** ForgeWire is not available to download or install. This repository is the public project overview; it does not contain the application source, a supported setup path, or a release date.
 
-ForgeWire is a modular environment being built to coordinate models, personas, tools, skills, memory, task execution, and compute around real work. The project starts from a systems-first premise: useful AI depends on the boundaries, state, recovery paths, and human decisions around a model—not only on the model itself.
+ForgeWire is an application under development for work that uses models, personas, tools, skills, saved context, and task execution. The application records state, separates responsibilities, and gives people a way to review work and handle failures.
 
 **Start here:** [What ForgeWire is](#what-forgewire-is) · [Application preview](#application-preview) · [How the system fits together](#how-the-system-fits-together) · [What a user can do](#what-a-user-can-do-in-a-private-workspace) · [Current status](#current-status) · [Follow release updates](#follow-release-updates)
 
@@ -38,13 +38,13 @@ ForgeWire is a modular environment being built to coordinate models, personas, t
 
 ## Why ForgeWire exists
 
-Most assistants are organized around a model and a conversation window. ForgeWire is being organized around the work: understanding a request, selecting relevant capabilities, preserving useful context, coordinating bounded steps, and returning an outcome a person can review.
+ForgeWire starts with the work a person needs to do. A request may involve a model, saved context, a tool, or several steps. The person should be able to see the result and review any proposed action.
 
-The aim is not to make one model pretend to do everything or to replace human judgment. The aim is to coordinate different models, software, data, and compute within visible responsibilities—and to make the system useful when a provider, dependency, or machine is constrained.
+Different models, software, data, and machines can handle different parts of a request. ForgeWire assigns those parts to specific services and exposes failures when a provider or machine is unavailable.
 
 ## What ForgeWire is
 
-ForgeWire is an application and runtime for coordinating intelligent work. It is not a single chatbot, an autonomous agent with blanket authority, or a public model-hosting service. Its capabilities are divided among components with different jobs:
+ForgeWire is an application and runtime with components for conversation, model access, tools, state, and execution. Each component has a defined job:
 
 | Part | Responsibility | Maturity in the current private application |
 | --- | --- | --- |
@@ -65,9 +65,9 @@ Model and provider choices should remain replaceable. Local, hosted, and special
 
 > **Agentic systems are systems first and models second.**
 >
-> Survivability under deployment—graceful degradation, layered ownership, parity paths, audit trails, and replaceable substrates—is the property that determines whether a system is useful, not benchmark scores on a model card.
+> A system remains useful under failure when it can degrade gracefully, keep ownership clear, preserve audit trails, and replace a model or execution layer without losing the work. A benchmark score cannot measure all of that.
 
-Models can be useful and still be wrong, slow, unavailable, or replaced. ForgeWire treats them as one part of a larger system that must make state and ownership visible, preserve human control, and expose the limits of its current recovery paths. This thesis is an engineering direction; it is not a claim that every listed property is complete today.
+Models can be wrong, slow, or unavailable. ForgeWire keeps responsibility for state and actions outside the model. Some recovery paths are implemented today; others remain under development.
 
 ## Application preview
 
@@ -189,7 +189,7 @@ ForgeWire is not currently a hosted service, supported enterprise deployment, or
 
 ## Built around useful failure and human authority
 
-ForgeWire is developed around the assumption that providers, dependencies, hardware, and remote connections can fail. The system should make that state inspectable and keep action authority explicit.
+Providers, dependencies, hardware, and remote connections can fail. ForgeWire aims to show those failures clearly and keep decisions about further action with the operator.
 
 The engineering goals include:
 
@@ -204,9 +204,9 @@ Those are design requirements, not blanket assurances about current product cove
 
 ## Research direction
 
-ForgeWire provides a product path for selected research from ForgeWire Labs. Current areas of interest include bounded recurrent reasoning, task-local cognitive control, continual learning, adaptive routing, calibrated fusion, specialist models, hybrid language and state models, evaluation and replay, persistent agency, and temporal continuity.
+ForgeWire Labs also researches bounded recurrent reasoning, task-local cognitive control, continual learning, adaptive routing, calibrated fusion, specialist models, hybrid language and state models, evaluation and replay, persistent agency, and temporal continuity.
 
-Research is not automatically product capability. Experimental work should move through isolation, baseline comparison, controlled evaluation, failure analysis, observe-only integration, and limited canary use before production adoption is considered.
+Research ideas are tested separately before they are considered for the application. That work includes baseline comparisons, failure analysis, and limited trials.
 
 ## Project lineage
 
@@ -216,10 +216,10 @@ The project evolved from a multi-agent assistant toward a broader application wi
 
 ## Related work
 
-- **ForgeWire Fabric** — private distributed execution and control-plane development associated with ForgeWire. Current and future development is proprietary unless a specific distribution says otherwise. Historical copies previously distributed under Apache License 2.0 remain governed by the terms that accompanied those copies; their granted rights are not revoked here.
-- [SCOUT-2](https://github.com/ForgeWireLabs/SCOUT-2) — an earlier multi-agent assistant and part of the public project lineage.
-- [ForgeWire Labs](https://github.com/ForgeWireLabs) — independent engineering and applied AI research.
-- [RepoPact Core](https://github.com/ForgeWireLabs/repopact-core) and [ForgeLink](https://github.com/JeremyShows/ForgeLink) — separately maintained public projects. Consult their repositories for their own status and terms.
+- **ForgeWire Fabric**: private distributed execution and control-plane development associated with ForgeWire. Current and future development is proprietary unless a specific distribution says otherwise. Historical copies previously distributed under Apache License 2.0 remain governed by the terms that accompanied those copies; their granted rights are not revoked here.
+- [SCOUT-2](https://github.com/ForgeWireLabs/SCOUT-2): an earlier multi-agent assistant and part of the public project lineage.
+- [ForgeWire Labs](https://github.com/ForgeWireLabs): independent engineering and applied AI research.
+- [RepoPact Core](https://github.com/ForgeWireLabs/repopact-core) and [ForgeLink](https://github.com/JeremyShows/ForgeLink): separately maintained public projects. Consult their repositories for their own status and terms.
 
 ## Current status
 
@@ -246,14 +246,14 @@ A public release should include supported-platform and installation guidance, se
 
 ## How ForgeWire is built
 
-ForgeWire is a human-led, deeply AI-assisted engineering and research effort led by [Jeremy Shows](https://github.com/JeremyShows) through [ForgeWire Labs](https://github.com/ForgeWireLabs). AI systems contribute materially across research, architecture exploration, implementation, debugging, testing, review, and documentation. Jeremy works directly across that lifecycle, makes technical and integration decisions, challenges proposed solutions, and retains responsibility for validation and acceptance.
+ForgeWire is an engineering and research effort led by [Jeremy Shows](https://github.com/JeremyShows) through [ForgeWire Labs](https://github.com/ForgeWireLabs). AI systems contribute materially across research, architecture exploration, implementation, debugging, testing, review, and documentation. Jeremy works directly across that lifecycle, makes technical and integration decisions, challenges proposed solutions, and retains responsibility for validation and acceptance.
 
 The work draws on open research, open-source software, commercial AI tools, and established systems engineering. It does not claim unaided authorship or delegate technical responsibility wholesale to autonomous agents.
 
 ## Technical direction
 
-Work across ForgeWire and adjacent components has included **Rust, Python, TypeScript, GTK, React, PostgreSQL, SQLite, and rqlite**, alongside structured messaging and local or hosted model-provider integrations. This is a high-level inventory across a broader private effort—not a compatibility list, deployment guide, or promise that each technology is currently composed in the application. These are replaceable choices, not the identity of the system.
+Work across ForgeWire and adjacent components has included **Rust, Python, TypeScript, GTK, React, PostgreSQL, SQLite, and rqlite**, alongside structured messaging and local or hosted model-provider integrations. This lists technologies used across the private work. It does not mean they are all present in one build or available for public deployment. These are replaceable choices, not the identity of the system.
 
 ---
 
-> Most assistants optimize for conversation. ForgeWire is being built to make AI-assisted work more inspectable, bounded, recoverable, and useful under real constraints.
+> ForgeWire is being built so people can see what happened, review actions, and continue work after a failure.
