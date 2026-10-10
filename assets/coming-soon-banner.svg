@@ -6,11 +6,11 @@
   </defs>
   <rect x="1" y="1" width="1598" height="124" rx="18" fill="url(#bar)" stroke="#335267" stroke-width="2"/>
   <rect x="28" y="31" width="8" height="64" rx="4" fill="#57d5e2"/>
-  <rect x="58" y="30" width="192" height="66" rx="33" fill="#183e4a" stroke="#4cbac4" stroke-width="1.5"/>
+  <rect x="58" y="30" width="232" height="66" rx="33" fill="#183e4a" stroke="#4cbac4" stroke-width="1.5"/>
   <circle cx="84" cy="63" r="6" fill="#84e7d0"/>
   <text x="104" y="70" fill="#b9f2e7" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="750" letter-spacing="1.5">COMING SOON</text>
-  <text x="286" y="58" fill="#f2f7f8" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="650">Private development</text>
-  <text x="286" y="88" fill="#adbfca" font-family="Segoe UI,Arial,sans-serif" font-size="17">No public download or release date has been announced.</text>
+  <text x="320" y="58" fill="#f2f7f8" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="650">Private development</text>
+  <text x="320" y="88" fill="#adbfca" font-family="Segoe UI,Arial,sans-serif" font-size="17">No public download or release date has been announced.</text>
   <path d="M1380 41h143M1410 63h113M1440 85h83" stroke="#4cbac4" stroke-opacity=".65" stroke-width="3" stroke-linecap="round"/>
   <circle cx="1364" cy="41" r="5" fill="#84e7d0"/><circle cx="1394" cy="63" r="5" fill="#84e7d0"/><circle cx="1424" cy="85" r="5" fill="#84e7d0"/>
 </svg>

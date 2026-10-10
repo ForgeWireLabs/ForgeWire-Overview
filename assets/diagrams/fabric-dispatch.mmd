@@ -1,17 +1,46 @@
-%% Mermaid source for fabric-dispatch.svg. This is a private architecture direction, not a released service.
-%%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"18px","primaryColor":"#fff4d9","primaryTextColor":"#543b0b","primaryBorderColor":"#d49a31","lineColor":"#9a835c","secondaryColor":"#eaf4ff","tertiaryColor":"#f3f6f8","background":"#ffffff"}}}%%
-flowchart TD
-  Operator["Operator / application"] -->|authorize bounded task| Dispatch["Dispatch intent<br/>identity · scope · policy"]
-  Dispatch --> Envelope["Signed authority envelope<br/>task + capability context"]
-  Envelope --> Transport["Authenticated transport<br/>Fabric direction · private"]
-  Transport --> Verify["Runner verifies identity<br/>and requested authority"]
-  Verify -->|permitted| Execute["Execute bounded work<br/>on authorized machine"]
-  Verify -->|reject / unavailable| Deny["Visible denial or failure"]
-  Execute --> Events["Structured result / event"]
-  Events --> Review["Return for application<br/>and operator review"]
-  Deny --> Review
-  Review -. "additional product evidence required" .-> Audit["No public deployment<br/>or operator setup"]
-  classDef private fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
-  classDef result fill:#f3f6f8,stroke:#7a8b96,color:#34434b;
-  class Operator,Dispatch,Envelope,Transport,Verify,Execute,Deny private;
-  class Events,Review,Audit result;
+%% Public-level view of private Fabric execution; only selected, configured ForgeWire workflows connect today.
+%% Do not infer a public deployment or an automatic recovery guarantee from this lifecycle.
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"17px","primaryColor":"#eaf4ff","primaryTextColor":"#12324a","primaryBorderColor":"#4c8cb5","lineColor":"#64839a","secondaryColor":"#fff4d9","tertiaryColor":"#f3f6f8","background":"#ffffff"},"flowchart":{"nodeSpacing":30,"rankSpacing":44,"curve":"linear"}}}%%
+flowchart LR
+  subgraph App["ForgeWire application"]
+    Operator["Operator authority"] --> Intent["Bounded work intent<br/>scope · capability · policy"]
+    Intent --> Adapter["Selected workflow adapter<br/>configuration-dependent"]
+    Adapter --> Dispatch["Authorized dispatch request"]
+  end
+
+  subgraph Fabric["ForgeWire Fabric · private alpha implementation"]
+    Hub["Fabric control plane<br/>policy · approvals · routing"]
+    Verify["Runner checks dispatcher<br/>and requested authority"]
+    Execute["Run within approved scope"]
+    Outcome["Status · result · failure evidence"]
+    Hub --> Verify
+    Verify -->|permitted| Execute
+    Verify -->|denied / unavailable| Outcome
+    Execute --> Outcome
+  end
+
+  Dispatch -. "remote dispatch" .-> Hub
+  Outcome --> Review["Return outcome to<br/>authorized caller for review"]
+  Review --> FollowUp["Caller or operator decides<br/>next action"]
+
+  subgraph Legend["Diagram key"]
+    direction LR
+    L1["Existing"] --- L2["Optional / configuration-dependent"] --- L3["Private implementation"] --- L4["Proposed / uncomposed"]
+  end
+
+  classDef existing fill:#eaf4ff,stroke:#4c8cb5,color:#12324a,stroke-width:1.5px;
+  classDef optional fill:#f2edff,stroke:#8063bf,color:#38255b,stroke-width:1.5px;
+  classDef private fill:#e4f4f0,stroke:#3c9182,color:#123f39,stroke-width:1.5px;
+  classDef proposed fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  class Operator,Intent,Dispatch,Review,FollowUp existing;
+  class Adapter optional;
+  class Hub,Verify,Execute,Outcome private;
+  class App existing;
+  classDef legendExisting fill:#eaf4ff,stroke:#4c8cb5,color:#12324a;
+  classDef legendOptional fill:#f2edff,stroke:#8063bf,color:#38255b;
+  classDef legendPrivate fill:#e4f4f0,stroke:#3c9182,color:#123f39;
+  classDef legendProposed fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  class L1 legendExisting;
+  class L2 legendOptional;
+  class L3 legendPrivate;
+  class L4 legendProposed;

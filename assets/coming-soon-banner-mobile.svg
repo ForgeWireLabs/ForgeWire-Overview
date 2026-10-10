@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="302" viewBox="0 0 360 170" role="img" aria-labelledby="title desc">
+  <title id="title">ForgeWire is coming soon</title>
+  <desc id="desc">Private development. No public download or release date has been announced.</desc>
+  <defs>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102a3e"/>
+      <stop offset="1" stop-color="#142f3b"/>
+    </linearGradient>
+    <linearGradient id="status" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#57d5e2"/>
+      <stop offset="1" stop-color="#84e7d0"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="358" height="168" rx="16" fill="url(#bar)" stroke="#335267" stroke-width="2"/>
+  <rect x="18" y="18" width="5" height="134" rx="2.5" fill="url(#status)"/>
+
+  <g transform="translate(38 18)">
+    <rect width="154" height="34" rx="17" fill="#183e4a" stroke="#4cbac4" stroke-width="1.2"/>
+    <circle cx="17" cy="17" r="4" fill="#84e7d0"/>
+    <text x="31" y="22" fill="#b9f2e7" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="750" letter-spacing="1.1">COMING SOON</text>
+  </g>
+
+  <text x="38" y="83" fill="#f2f7f8" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700">Private development</text>
+  <text x="38" y="109" fill="#adbfca" font-family="Segoe UI,Arial,sans-serif" font-size="12.5">No public download or release date</text>
+  <text x="38" y="128" fill="#adbfca" font-family="Segoe UI,Arial,sans-serif" font-size="12.5">has been announced.</text>
+
+  <path d="M266 28h70M280 44h56M294 60h42" stroke="#4cbac4" stroke-opacity=".6" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="257" cy="28" r="3" fill="#84e7d0"/>
+  <circle cx="271" cy="44" r="3" fill="#84e7d0"/>
+  <circle cx="285" cy="60" r="3" fill="#84e7d0"/>
+</svg>

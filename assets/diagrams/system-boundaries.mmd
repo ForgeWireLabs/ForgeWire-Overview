@@ -1,28 +1,69 @@
-%% Mermaid source for system-boundaries.svg. Blue = current code path; amber/dashed = evolving boundary.
-%%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"18px","primaryColor":"#eaf4ff","primaryTextColor":"#12324a","primaryBorderColor":"#4c8cb5","lineColor":"#64839a","secondaryColor":"#fff4d9","tertiaryColor":"#f3f6f8","background":"#ffffff"}}}%%
+%% ForgeWire Runtime Core is a conceptual product boundary across packages, not the forgewire_core/ package.
+%% Current ForgeWire app composition is distinct from private Fabric direction and the Rust library substrate.
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"17px","primaryColor":"#eaf4ff","primaryTextColor":"#12324a","primaryBorderColor":"#4c8cb5","lineColor":"#64839a","background":"#ffffff"},"flowchart":{"nodeSpacing":28,"rankSpacing":42,"curve":"linear"}}}%%
 flowchart LR
-  Person["Person or operator"] --> GTK["GTK desktop shell<br/>current user path"]
-  Person --> HTTP["HTTP server routes<br/>internal surface"]
-  GTK --> App["Application composition<br/>private runtime"]
-  HTTP --> App
-  subgraph Runtime["ForgeWire Runtime Core · conceptual boundary across packages"]
-    App --> Services["Application services<br/>personas · providers · chat<br/>knowledge · tasks · jobs"]
-    Services --> Provider["Configured provider and model<br/>resolution"]
-    Services --> Tooling["Shared tooling service<br/>tools and skill metadata"]
-    Services --> Graph["Graph execution path<br/>current private runtime"]
-    Services --> State["Configured service/repository paths<br/>conversation · task · job · knowledge"]
-    Services --> MessageBus["Async message bus<br/>in-process messaging"]
-    Services --> LocalEvents["Local event notifications<br/>separate synchronous path"]
-    subgraph Substrate["Replaceable runtime substrates"]
-    ReplaceableBus["Message substrate"]
-    ReplaceableExecution["Execution substrate"]
-    end
-    Graph --> Tooling
-    Tooling --> MessageBus
-    MessageBus -. "replaceable implementation" .-> ReplaceableBus
-    Graph -. "runtime transition in progress" .-> ReplaceableExecution
+  Person["Person / operator"] --> GTK["GTK desktop shell"]
+  Person --> HTTP["HTTP routes<br/>available integration surface"]
+
+  subgraph App["ForgeWire application · core/forgewire.py composition"]
+    direction LR
+    Services["Core services<br/>personas · chat · providers · tools<br/>tasks · jobs · knowledge"]
+    Orchestration["Orchestration<br/>TaskManager · JobManager · workflows"]
+    Graph["Forge Core Graph<br/>Python execution path"]
+    FCB["Forge Core Bus<br/>one in-process async bus"]
+    Notify["EventDispatcherRegistry<br/>synchronous local notifications"]
+    Services --> Orchestration
+    Orchestration --> Graph
+    Services --> FCB
+    Services -. "separate local notification path" .-> Notify
   end
-  classDef current fill:#eaf4ff,stroke:#4c8cb5,color:#12324a,stroke-width:1.5px;
-  classDef evolving fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
-  class Person,GTK,HTTP,App,Services,Provider,Tooling,Graph,State,MessageBus,LocalEvents,ReplaceableBus,ReplaceableExecution current;
-  class Runtime,Substrate evolving;
+  GTK --> Services
+  HTTP --> Services
+
+  Services --> Stores["Configured repositories / stores"]
+  Stores --> Conv[("Conversation store")]
+  Stores --> Task[("Task store")]
+  Stores --> Job[("Job store")]
+  Stores --> Knowledge[("Knowledge store<br/>when configured")]
+
+  subgraph Substrate["Replaceable substrate · forgewire_core/"]
+    direction TB
+    CoreBus["Forge Core Bus substrate"]
+    CoreGraph["Graph runtime substrate"]
+    Shard["Sharding library<br/>not application-composed"]
+  end
+  FCB -. "substrate implementation" .-> CoreBus
+  Graph -. "uses" .-> CoreGraph
+  CoreGraph -. "optional library, not composed" .-> Shard
+  Rust["forgewire-runtime/<br/>standalone Rust library<br/>not current Python runtime bridge"] -. "optional / uncomposed" .-> CoreGraph
+
+  subgraph Fabric["ForgeWire Fabric · private alpha implementation"]
+    Hub["Fabric control plane"] --> Runner["Authorized runner / host"]
+  end
+  Orchestration --> Adapter["Selected workflow adapters<br/>configuration-dependent"]
+  Adapter -. "remote dispatch" .-> Hub
+
+  subgraph Legend["Diagram key"]
+    direction LR
+    L1["Existing"] --- L2["Optional / configuration-dependent"] --- L3["Private implementation"] --- L4["Proposed / uncomposed"]
+  end
+
+  classDef existing fill:#eaf4ff,stroke:#4c8cb5,color:#12324a,stroke-width:1.5px;
+  classDef optional fill:#f2edff,stroke:#8063bf,color:#38255b,stroke-width:1.5px;
+  classDef private fill:#e4f4f0,stroke:#3c9182,color:#123f39,stroke-width:1.5px;
+  classDef proposed fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  classDef boundary fill:#f7fbff,stroke:#4c8cb5,color:#12324a,stroke-width:2px;
+  class Person,GTK,HTTP,Services,Orchestration,Graph,FCB,Notify,Stores,Conv,Task,Job existing;
+  class Knowledge,Rust,Shard,Adapter optional;
+  class Hub,Runner,CoreBus,CoreGraph private;
+  classDef proposedNode fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  classDef legendExisting fill:#eaf4ff,stroke:#4c8cb5,color:#12324a;
+  classDef legendOptional fill:#f2edff,stroke:#8063bf,color:#38255b;
+  classDef legendPrivate fill:#e4f4f0,stroke:#3c9182,color:#123f39;
+  classDef legendProposed fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  class L1 legendExisting;
+  class L2 legendOptional;
+  class L3 legendPrivate;
+  class L4 legendProposed;
+  class App,Substrate boundary;
+  class Fabric private;

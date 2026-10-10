@@ -1,6 +1,6 @@
 # Diagram sources and exports
 
-The `.mmd` files are the editable Mermaid sources. Matching `.svg` files are the responsive vector exports embedded in the public README; matching `.png` files are raster exports for previews and other platforms. The README captions identify each source.
+The `.mmd` files are the editable Mermaid sources. Matching `.png` files are embedded in the public README; matching `.svg` files are linked beside each image for zoomable vector viewing. Each diagram uses the same status key: existing, optional/configuration-dependent, private implementation, and proposed or in-progress behavior.
 
 To regenerate the exports with Node.js and npm:
 
@@ -13,4 +13,4 @@ Get-ChildItem assets/diagrams -Filter *.mmd | ForEach-Object {
 }
 ```
 
-Diagrams distinguish implementation paths from active work and intended behavior. Update their captions and status language when the implementation changes.
+Diagrams distinguish implementation paths from active work and intended behavior. Update their captions and status language when the implementation changes. The exports should be regenerated together whenever a `.mmd` source changes.

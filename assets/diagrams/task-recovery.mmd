@@ -1,30 +1,45 @@
-%% Mermaid source for task-recovery.svg. Recovery/escalation branches are design goals, not a shipped guarantee.
-%%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"18px","primaryColor":"#eaf4ff","primaryTextColor":"#12324a","primaryBorderColor":"#4c8cb5","lineColor":"#64839a","secondaryColor":"#fff4d9","tertiaryColor":"#f3f6f8","background":"#ffffff"}}}%%
-flowchart TB
-  subgraph Current["NOW"]
+%% Task review and configured graph/task retries exist; a single cross-path recovery policy does not.
+%% Universal checkpoint/resume, replay, and automatic escalation remain incomplete.
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"18px","primaryColor":"#eaf4ff","primaryTextColor":"#12324a","primaryBorderColor":"#4c8cb5","lineColor":"#64839a","background":"#ffffff"},"flowchart":{"nodeSpacing":28,"rankSpacing":38,"curve":"linear"}}}%%
+flowchart LR
+  subgraph TaskLifecycle["Current task review lifecycle"]
     direction LR
-    Workflow["Configured workflow"] --> Record["Task record"]
-    Record --> Review["Person reviews task"]
-    Review --> Decide{"Follow available action,<br/>stop, or ask operator?"}
+    Draft["DRAFT"] --> Ready["READY"] --> Running["IN_PROGRESS"] --> Review["REVIEW"] -->|operator completes| Done["DONE"]
+    Running -. "cancellation path" .-> Cancelled["CANCELLED"]
   end
-  subgraph Direction["NEXT"]
+
+  subgraph PathRecovery["Existing path-specific recovery controls"]
     direction LR
-    Run["Bounded execution step"] --> Outcome{"Step outcome"}
-    Outcome -->|success| Result["Return result for review"]
-    Outcome -->|failure| Failure["Expose failure state"]
-    Failure -. "only an allowed recovery path" .-> Recover["Bounded retry or alternate path"]
-    Recover -. "if safe and configured" .-> Run
-    Failure --> Escalate["Stop and escalate to operator"]
+    Step["Graph / task execution"] --> Failure["Step failure"]
+    Failure --> Retry["Configured bounded retry<br/>on supported paths"]
+    Retry -->|attempt remains| Step
+    Retry -->|exhausted| Surfaced["Failure recorded / surfaced"]
+    Surfaced --> Panel["ManualInterventionPanel<br/>operator review / request"]
+    Panel --> Human["Operator chooses follow-up"]
   end
-  Decide -. "when workflow invokes execution" .-> Run
-  Decide -->|stop / review| Human["Human decision and follow-up"]
-  Result --> Human
-  Escalate --> Human
-  classDef current fill:#eaf4ff,stroke:#4c8cb5,color:#12324a,stroke-width:1.5px;
-  classDef evolving fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
-  classDef human fill:#e9f7f0,stroke:#57a77e,color:#214a35;
-  class Workflow,Record,Review,Decide current;
-  class Run,Outcome,Failure,Recover,Escalate evolving;
-  class Result,Human human;
-  style Current fill:#f7fbff,stroke:#8bb5d0,stroke-width:1.5px;
-  style Direction fill:#fffaf0,stroke:#d49a31,stroke-dasharray:5 4;
+
+  Surfaced -. "broader policy work" .-> Typed["WI285 · typed failure and degradation<br/>contracts in progress"]
+  Typed -. "does not yet provide" .-> Universal["Universal retry / replay /<br/>checkpoint-resume / auto-escalation"]
+  Review --> Human
+
+  subgraph Legend["Diagram key"]
+    direction LR
+    L1["Existing"] --- L2["Optional / configuration-dependent"] --- L3["Private implementation"] --- L4["Proposed / in progress"]
+  end
+
+  classDef existing fill:#eaf4ff,stroke:#4c8cb5,color:#12324a,stroke-width:1.5px;
+  classDef optional fill:#f2edff,stroke:#8063bf,color:#38255b,stroke-width:1.5px;
+  classDef private fill:#e4f4f0,stroke:#3c9182,color:#123f39,stroke-width:1.5px;
+  classDef proposed fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  class Draft,Ready,Running,Review,Done,Cancelled,Step,Failure,Retry,Surfaced,Panel,Human existing;
+  class Typed,Universal proposed;
+  classDef legendExisting fill:#eaf4ff,stroke:#4c8cb5,color:#12324a;
+  classDef legendOptional fill:#f2edff,stroke:#8063bf,color:#38255b;
+  classDef legendPrivate fill:#e4f4f0,stroke:#3c9182,color:#123f39;
+  classDef legendProposed fill:#fff4d9,stroke:#d49a31,color:#543b0b,stroke-dasharray:5 4;
+  class L1 legendExisting;
+  class L2 legendOptional;
+  class L3 legendPrivate;
+  class L4 legendProposed;
+  classDef boundary fill:#f7fbff,stroke:#4c8cb5,color:#12324a,stroke-width:2px;
+  class TaskLifecycle boundary;

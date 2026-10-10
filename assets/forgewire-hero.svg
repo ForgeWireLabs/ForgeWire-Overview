@@ -1,39 +1,127 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520" role="img" aria-labelledby="title desc">
-  <title id="title">ForgeWire — Where the mind is forged</title>
-  <desc id="desc">A systems-first environment for AI-assisted work, connecting people, models, tools, state, and execution within visible boundaries.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="620" viewBox="0 0 1600 620" role="img" aria-labelledby="title desc">
+  <title id="title">ForgeWire — Where the Mind Is Forged</title>
+  <desc id="desc">ForgeWire coordinates modular AI work across local and authorized remote compute, with visible boundaries and operator control. Private development; coming soon.</desc>
   <defs>
-    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#071321"/>
-      <stop offset=".58" stop-color="#0b2034"/>
-      <stop offset="1" stop-color="#102b42"/>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111d"/>
+      <stop offset=".52" stop-color="#0b1b2a"/>
+      <stop offset="1" stop-color="#102637"/>
     </linearGradient>
-    <linearGradient id="signal" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#51d5ff"/>
-      <stop offset="1" stop-color="#94f0cb"/>
+    <linearGradient id="forge-light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#68e2e4"/>
+      <stop offset="1" stop-color="#9bf2c9"/>
     </linearGradient>
-    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
-      <path d="M44 0H0V44" fill="none" stroke="#9dc5e3" stroke-opacity=".065" stroke-width="1"/>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#142c3d"/>
+      <stop offset="1" stop-color="#0d2030"/>
+    </linearGradient>
+    <linearGradient id="remote" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f0b96f" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#f4d29c" stop-opacity=".85"/>
+    </linearGradient>
+    <pattern id="fine-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#a8c7da" stroke-opacity=".055" stroke-width="1"/>
     </pattern>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <pattern id="micro-grid" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M8 0H0V8" fill="none" stroke="#9dc5d7" stroke-opacity=".035" stroke-width=".7"/>
+    </pattern>
+    <filter id="soft-glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
-  <rect width="1600" height="520" rx="24" fill="url(#canvas)"/>
-  <rect width="1600" height="520" rx="24" fill="url(#grid)"/>
-  <path d="M80 76v368" stroke="url(#signal)" stroke-width="5" stroke-linecap="round"/>
-  <text x="116" y="116" fill="#9bb5ca" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700" letter-spacing="5">FORGEWIRE · SYSTEMS FOR INTELLIGENT WORK</text>
-  <text x="108" y="230" fill="#f1f7fb" font-family="Segoe UI,Arial,sans-serif" font-size="82" font-weight="750" letter-spacing="-2">Where the mind</text>
-  <text x="108" y="324" fill="#f1f7fb" font-family="Segoe UI,Arial,sans-serif" font-size="82" font-weight="750" letter-spacing="-2">is forged.</text>
-  <text x="113" y="382" fill="#b8cad7" font-family="Segoe UI,Arial,sans-serif" font-size="25">Models, tools, memory, and execution—coordinated around real work.</text>
-  <text x="114" y="442" fill="#81e1d4" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="2">YOUR INTELLIGENCE · YOUR DATA · YOUR HARDWARE · YOUR RULES</text>
-  <g fill="none" stroke="url(#signal)" stroke-width="3" stroke-opacity=".8">
-    <path d="M1020 144 1195 222 1390 130M1195 222 1407 317 1510 213M1195 222 1090 355 1294 421 1407 317"/>
-    <path d="M1020 144 1090 355M1390 130 1407 317" stroke-opacity=".32" stroke-dasharray="7 10"/>
+
+  <rect width="1600" height="620" rx="28" fill="url(#background)"/>
+  <rect width="1600" height="620" rx="28" fill="url(#fine-grid)"/>
+  <path d="M800 0V620" stroke="#9ec3d4" stroke-opacity=".10"/>
+
+  <!-- Brand and message -->
+  <path d="M82 75V535" stroke="url(#forge-light)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M82 75h34" stroke="url(#forge-light)" stroke-width="4" stroke-linecap="round"/>
+  <text x="136" y="83" fill="#9eb8c9" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="4.2">FORGEWIRE  /  SYSTEMS FOR INTELLIGENT WORK</text>
+
+  <g transform="translate(136 119)">
+    <rect width="204" height="40" rx="20" fill="#183c42" stroke="#438f8b" stroke-width="1.5"/>
+    <circle cx="22" cy="20" r="5" fill="#9be6c7"/>
+    <text x="40" y="26" fill="#c1f0dc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="750" letter-spacing="1.5">COMING SOON</text>
   </g>
-  <g fill="#0b2034" stroke="url(#signal)" stroke-width="4">
-    <circle cx="1020" cy="144" r="16"/><circle cx="1195" cy="222" r="25"/>
-    <circle cx="1390" cy="130" r="18"/><circle cx="1407" cy="317" r="21"/>
-    <circle cx="1510" cy="213" r="14"/><circle cx="1090" cy="355" r="18"/><circle cx="1294" cy="421" r="16"/>
+
+  <text x="132" y="267" fill="#f1f6f8" font-family="Segoe UI,Arial,sans-serif" font-size="78" font-weight="720" letter-spacing="-2.8">Where the Mind</text>
+  <text x="132" y="354" fill="#f1f6f8" font-family="Segoe UI,Arial,sans-serif" font-size="78" font-weight="720" letter-spacing="-2.8">Is Forged</text>
+  <path d="M136 390h368" stroke="url(#forge-light)" stroke-width="2" stroke-opacity=".78"/>
+  <text x="136" y="431" fill="#d2e0e7" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="550">Your intelligence. Your data.</text>
+  <text x="136" y="463" fill="#d2e0e7" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="550">Your hardware. Your rules.</text>
+  <text x="136" y="526" fill="#80d9d4" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="2.2">SYSTEMS FIRST  ·  MODELS ARE ONE PART</text>
+
+  <!-- Modular local workspace chassis -->
+  <g>
+    <rect x="848" y="104" width="470" height="412" rx="18" fill="#081724" stroke="#426174" stroke-width="2"/>
+    <rect x="858" y="114" width="450" height="392" rx="12" fill="url(#micro-grid)" stroke="#172f40" stroke-width="1"/>
+    <path d="M848 157h-12M848 460h-12M1318 157h12M1318 460h12" stroke="#688698" stroke-width="3" stroke-linecap="round"/>
+    <text x="880" y="143" fill="#b9cfda" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2.1">LOCAL WORKSPACE</text>
+    <text x="1283" y="143" fill="#78d8c7" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">OPERATOR OWNED</text>
+    <path d="M880 166h405" stroke="#456273" stroke-opacity=".75"/>
+
+    <!-- Distinct replaceable capability modules -->
+    <g font-family="Segoe UI,Arial,sans-serif">
+      <rect x="880" y="191" width="120" height="118" rx="10" fill="url(#panel)" stroke="#3b7380" stroke-width="1.5"/>
+      <path d="M897 211h24v24h-24zM903 217h12v12h-12z" fill="none" stroke="#80ded8" stroke-width="1.5"/>
+      <path d="M909 205v6m0 24v6m-18-18h6m24 0h6" stroke="#80ded8" stroke-width="1.2"/>
+      <text x="897" y="267" fill="#f0f6f8" font-size="15" font-weight="700" letter-spacing=".7">MODEL</text>
+      <text x="897" y="289" fill="#91aab8" font-size="12">replaceable</text>
+
+      <rect x="1014" y="191" width="120" height="118" rx="10" fill="url(#panel)" stroke="#3b7380" stroke-width="1.5"/>
+      <path d="M1031 211h26v24h-26zM1037 217h14v12h-14z" fill="none" stroke="#80ded8" stroke-width="1.5"/>
+      <path d="M1031 217l-5 0m5 12l-5 0m31-12h5m-5 12h5" stroke="#80ded8" stroke-width="1.2"/>
+      <text x="1031" y="267" fill="#f0f6f8" font-size="15" font-weight="700" letter-spacing=".7">TOOLS</text>
+      <text x="1031" y="289" fill="#91aab8" font-size="12">scoped actions</text>
+
+      <rect x="1148" y="191" width="137" height="118" rx="10" fill="url(#panel)" stroke="#3b7380" stroke-width="1.5"/>
+      <path d="M1165 211h26v24h-26zM1171 217h14v12h-14z" fill="none" stroke="#80ded8" stroke-width="1.5"/>
+      <path d="M1165 217l-5 0m5 12l-5 0m31-12h5m-5 12h5" stroke="#80ded8" stroke-width="1.2"/>
+      <text x="1165" y="267" fill="#f0f6f8" font-size="15" font-weight="700" letter-spacing=".7">STATE</text>
+      <text x="1165" y="289" fill="#91aab8" font-size="12">owned here</text>
+    </g>
+
+    <path d="M940 323v18h278v-18" fill="none" stroke="#5a8492" stroke-width="1.5"/>
+    <circle cx="1079" cy="341" r="4" fill="#6be0d4" filter="url(#soft-glow)"/>
+    <rect x="880" y="365" width="405" height="102" rx="12" fill="#102d39" stroke="#4d8f91" stroke-width="1.5"/>
+    <path d="M904 394h44v39h-44zM913 403h26v21h-26z" fill="none" stroke="url(#forge-light)" stroke-width="1.8"/>
+    <path d="M926 386v8m0 39v8m-30-27h8m44 0h8" stroke="#88e4d1" stroke-width="1.4"/>
+    <text x="969" y="405" fill="#eef6f7" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="1.1">BOUNDED EXECUTION</text>
+    <text x="969" y="434" fill="#a7c0ca" font-family="Segoe UI,Arial,sans-serif" font-size="14">inspectable work · explicit ownership</text>
+    <rect x="1190" y="388" width="83" height="34" rx="17" fill="#153f42" stroke="#4faaa0"/>
+    <circle cx="1206" cy="405" r="4" fill="#9de7c9"/>
+    <text x="1218" y="410" fill="#c6f1df" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="1">LOCAL</text>
   </g>
-  <circle cx="1195" cy="222" r="41" fill="none" stroke="#51d5ff" stroke-opacity=".23" stroke-width="2" filter="url(#glow)"/>
+
+  <!-- A permission boundary leads to a distinct, optional remote substrate -->
+  <g>
+    <path d="M1318 420h34" stroke="url(#remote)" stroke-width="2.5" stroke-dasharray="5 6"/>
+    <rect x="1352" y="381" width="52" height="78" rx="9" fill="#211f1c" stroke="#c6955d" stroke-width="1.5"/>
+    <path d="M1368 414v-7a9 9 0 0 1 18 0v7" fill="none" stroke="#f1c688" stroke-width="2"/>
+    <rect x="1365" y="414" width="24" height="21" rx="4" fill="#49351f" stroke="#f1c688" stroke-width="1.4"/>
+    <circle cx="1377" cy="423" r="2" fill="#ffe0ae"/>
+    <text x="1378" y="480" text-anchor="middle" fill="#e4bd8a" font-family="Segoe UI,Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1.1">POLICY</text>
+    <path d="M1404 420h22" stroke="url(#remote)" stroke-width="2.5" stroke-dasharray="5 6"/>
+    <path d="M1426 415l8 5-8 5" fill="none" stroke="#f1c688" stroke-width="2"/>
+
+    <rect x="1437" y="161" width="116" height="355" rx="14" fill="#151d23" stroke="#98794f" stroke-width="1.5" stroke-dasharray="7 6"/>
+    <text x="1495" y="192" text-anchor="middle" fill="#e9c797" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">REMOTE</text>
+    <path d="M1456 211h78" stroke="#806b4e" stroke-opacity=".8"/>
+    <rect x="1455" y="237" width="80" height="119" rx="9" fill="#20282d" stroke="#9b7e57" stroke-width="1.3"/>
+    <path d="M1471 256h48v10h-48zm0 21h48v10h-48zm0 21h48v10h-48" fill="none" stroke="#d7b580" stroke-width="1.3"/>
+    <circle cx="1526" cy="261" r="2.5" fill="#eed09e"/>
+    <circle cx="1526" cy="282" r="2.5" fill="#eed09e"/>
+    <circle cx="1526" cy="303" r="2.5" fill="#eed09e"/>
+    <text x="1495" y="387" text-anchor="middle" fill="#d6e0e3" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700">COMPUTE</text>
+    <text x="1495" y="408" text-anchor="middle" fill="#a6b3b9" font-family="Segoe UI,Arial,sans-serif" font-size="11">separate machine</text>
+    <rect x="1454" y="442" width="82" height="34" rx="17" fill="#3a3023" stroke="#9e7d4e"/>
+    <text x="1495" y="464" text-anchor="middle" fill="#f0d4aa" font-family="Segoe UI,Arial,sans-serif" font-size="10" font-weight="700" letter-spacing=".7">AUTHORIZED</text>
+    <text x="1495" y="496" text-anchor="middle" fill="#9c927f" font-family="Segoe UI,Arial,sans-serif" font-size="10" letter-spacing=".9">PRIVATE DIRECTION</text>
+  </g>
+
+  <text x="852" y="562" fill="#718b9b" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="650" letter-spacing="1.7">MODULAR BY DESIGN</text>
+  <path d="M1008 558h275" stroke="#456171" stroke-width="1"/>
+  <text x="1548" y="562" text-anchor="end" fill="#8ca0aa" font-family="Segoe UI,Arial,sans-serif" font-size="12" letter-spacing="1.4">CONTROL STAYS VISIBLE</text>
 </svg>
