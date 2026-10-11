@@ -138,11 +138,11 @@ The 12 screenshots cover every setup step. The introduction and preflight screen
 
 ### Signed-in workspace: earlier Tasks and Jobs state
 
-These five captures show the running ForgeWire development workspace on 2026-10-10 with the existing local account; the checked-out source reported version `0.2.0`. They predate the scheduler-state change below. Tasks and Jobs showed initialization-error dialogs in that run. The three full-window images are cropped above the status footer to remove the local account name and provider/voice settings. The two close-ups contain only the dialogs.
+These five captures show the running ForgeWire development workspace on 2026-10-10 with the existing local account; the checked-out source reported version `0.2.0`. They predate the scheduler-state change below. Tasks and Jobs showed initialization-error dialogs in that run. The three full-window images are cropped to the ForgeWire application window and above the status footer, removing the local account name, provider/voice settings, and surrounding desktop. The two close-ups contain only the dialogs.
 
 ![ForgeWire development workspace showing the Work navigation and pre-remediation task initialization error](assets/screenshots/workspace-2026-10-10/01-work-task-initialization-error.jpg)
 
-*Earlier Tasks view, captured on 2026-10-10. The status footer is cropped to remove local account and provider details.*
+*Earlier Tasks view, captured on 2026-10-10. The application-window crop removes the status footer and surrounding desktop.*
 
 ![Close capture of the ForgeWire task initialization error dialog](assets/screenshots/workspace-2026-10-10/01b-work-task-initialization-dialog.jpg)
 
@@ -150,11 +150,11 @@ These five captures show the running ForgeWire development workspace on 2026-10-
 
 ![ForgeWire Work area after dismissing the task initialization error](assets/screenshots/workspace-2026-10-10/02-work-after-error-dialog.jpg)
 
-*After dismissing the earlier Tasks dialog, the Work content area was blank in this capture. The status footer is cropped.*
+*After dismissing the earlier Tasks dialog, the Work content area was blank in this capture. The application-window crop removes the status footer and surrounding desktop.*
 
 ![ForgeWire development workspace showing the Jobs navigation and pre-remediation scheduling error](assets/screenshots/workspace-2026-10-10/03-work-jobs-scheduling-error.jpg)
 
-*Earlier Jobs view, captured on 2026-10-10. The status footer is cropped to remove local account and provider details.*
+*Earlier Jobs view, captured on 2026-10-10. The application-window crop removes the status footer and surrounding desktop.*
 
 ![Close capture of the ForgeWire Jobs scheduling error dialog](assets/screenshots/workspace-2026-10-10/03b-work-jobs-error-dialog.jpg)
 
