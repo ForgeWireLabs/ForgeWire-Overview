@@ -75,18 +75,19 @@ Models can be useful and still be wrong, slow, unavailable, or replaced. ForgeWi
 
 *Projects workspace in a private GTK development build, captured in August 2026 with disposable sample data. This is the real workspace widget rendered with the application stylesheet and service-backed sample state; it is not a full-window capture of the current signed-in shell. A project groups chats, files, and instructions while the active persona remains authoritative.*
 
-The signed-in tour is in progress. Genuine captures cover the Knowledge Library and Documentation Browser, Builder Personas and Providers, the Tools catalog, the Skills initialization error, and the File/Edit/View/Help menus. A blank Chat shell was captured before the current conversation began; that conversation still needs a capture. The open signed-in process is an older pre-fix build, so it cannot verify the Tasks/Jobs disabled state. A separate isolated first-run process now shows the corrected Preflight and Local AI deferred-install screens; it did not register an account or install a model. Operations, History, Settings, Calendar, Budget, and the current Tasks/Jobs states remain pending.
+The signed-in tour remains in progress. Genuine captures from 2026-10-11 cover the corrected disabled Tasks and Jobs pages, Calendar and Budget views, several Operations surfaces, History, Settings, and Builder catalogs. The current Skills page displays an initialization error and is documented as unavailable. Knowledge and File/Edit/View/Help menus remain historical captures. The earlier empty Chat shell predates the user's Mistral conversation and does not demonstrate conversation behavior; private conversation content was not captured. The inventory below lists remaining route and dialog gaps.
 
 | View | Verified capture |
 | --- | --- |
-| Conversation and response review | [Empty Chat shell](assets/screenshots/signed-in-tour-2026-10-10/chat-empty-before-user-conversation.png) — captured before the current conversation began; the conversation itself remains pending. |
-| Personas | [Builder catalog](assets/screenshots/signed-in-tour-2026-10-10/builder-personas.png) — pre-fix running build. |
-| Providers | [Provider list](assets/screenshots/signed-in-tour-2026-10-10/builder-providers.png) — names only; configuration and credentials were not opened. |
-| Tools and skills | [Tools catalog](assets/screenshots/signed-in-tour-2026-10-10/builder-tools.png); [Skills initialization error](assets/screenshots/signed-in-tour-2026-10-10/builder-skills-initialization-error.png). The error is not a working Skills view. |
-| Knowledge | [Empty Library](assets/screenshots/signed-in-tour-2026-10-10/knowledge-library.png); [Documentation Browser](assets/screenshots/signed-in-tour-2026-10-10/knowledge-docs.png). RAG remains switched off and was not opened; no separate Memory page appears in this build's Knowledge navigation. |
-| Tasks and Jobs | [Pre-fix Tasks initialization error](assets/screenshots/signed-in-tour-2026-10-10/tasks-init-error-pre-fix.png); the earlier Tasks/Jobs captures remain historical. Current disabled-state captures are pending. |
-| File/Edit/View/Help menus | [File](assets/screenshots/signed-in-tour-2026-10-10/file-menu.png), [Edit](assets/screenshots/signed-in-tour-2026-10-10/edit-menu.png), [View](assets/screenshots/signed-in-tour-2026-10-10/view-menu.png), [Help](assets/screenshots/signed-in-tour-2026-10-10/help-menu.png). |
-| Fabric operator and runner surfaces | Private development; not shown |
+| Work: Tasks and Jobs | [Tasks disabled](assets/screenshots/signed-in-tour-2026-10-11/tasks-disabled-current.png); [Jobs disabled](assets/screenshots/signed-in-tour-2026-10-11/jobs-disabled-current.png). Historical initialization errors remain labeled below. |
+| Work: Calendar and Budget | [Calendar Month](assets/screenshots/signed-in-tour-2026-10-11/calendar-month-current.png); [Budget Dashboard, redacted](assets/screenshots/signed-in-tour-2026-10-11/budget-dashboard-redacted.png). Full view inventory follows below. |
+| Builder | [Personas](assets/screenshots/signed-in-tour-2026-10-11/builder-personas-current.png); [Providers](assets/screenshots/signed-in-tour-2026-10-11/builder-providers-current.png); [Tools](assets/screenshots/signed-in-tour-2026-10-11/builder-tools-current.png); [Skills initialization error](assets/screenshots/signed-in-tour-2026-10-11/builder-skills-initialization-error-current.png). |
+| Operations | [Orchestration](assets/screenshots/signed-in-tour-2026-10-11/operations-orchestration-current.png); [Health](assets/screenshots/signed-in-tour-2026-10-11/operations-health-current.png); [Guardrails](assets/screenshots/signed-in-tour-2026-10-11/operations-guardrails-current.png); [MCP Servers](assets/screenshots/signed-in-tour-2026-10-11/operations-mcp-servers-current.png); [Vector Store](assets/screenshots/signed-in-tour-2026-10-11/operations-vector-store-current.png). |
+| History and Settings | [All Chats empty](assets/screenshots/signed-in-tour-2026-10-11/history-all-chats-empty.png); [Projects unavailable](assets/screenshots/signed-in-tour-2026-10-11/history-projects-unavailable-current.png); [API Keys, redacted](assets/screenshots/signed-in-tour-2026-10-11/settings-api-keys-redacted.png); [Background Automation disabled](assets/screenshots/signed-in-tour-2026-10-11/settings-background-automation-disabled.png). |
+| Conversation and response review | [Empty Chat shell](assets/screenshots/signed-in-tour-2026-10-10/chat-empty-before-user-conversation.png) - captured before the current conversation; conversation behavior is not established. |
+| Knowledge and menus | [Empty Library](assets/screenshots/signed-in-tour-2026-10-10/knowledge-library.png), [Documentation Browser](assets/screenshots/signed-in-tour-2026-10-10/knowledge-docs.png), and [File/Edit/View/Help menus](assets/screenshots/signed-in-tour-2026-10-10/file-menu.png). These are historical captures. |
+| Fabric operator and runner surfaces | Private development; not shown. |
+
 
 ### Corrected first-run setup (isolated current build)
 
@@ -195,20 +196,19 @@ These screens show initialization errors and the blank Work content area before 
 
 | Surface | Screens and relevant dialogs | Verified coverage |
 | --- | --- | --- |
-| First-run setup | Introduction, Preflight, Users/Admin, Storage/Advanced Storage, local workspace and native folder picker, Local AI, Cloud AI, Defaults | 12 historical captures remain preserved. Current isolated Preflight and Local AI pages show deferred installation; focused tests verify the Finish contract. Finish was not invoked, and the optional Cloud AI page was not retained because it displayed masked configured-provider states. |
-| Signed-in Chat | Main Chat, Blackboard, Context, Debug, conversation view | Empty shell captured before the current conversation; active conversation capture pending. |
-| Work | Tasks and Jobs | Pre-fix Tasks initialization error captured; current disabled-state captures pending. Earlier Tasks/Jobs failures are historical only. |
-| Work | Calendar and Budget | Capture pending. |
-| Knowledge | Library, Docs | Captured from pre-fix process. |
-| Knowledge | Memory, RAG | No separate Memory route appeared. RAG switch was off and left unchanged; route remains unverified. |
-| Builder | Personas, Providers, Tools | Captured from pre-fix process; provider configuration and credential fields were not opened. |
-| Builder | Skills | Captured initialization error: core skill metadata could not load. |
-| Operations | Orchestration; Health, Metrics, Traces, Alerts; Guardrails, Approvals, Audit Log; MCP Servers, MCP Tools, MCP Status; Vector Store | Capture pending. |
-| History | All Chats, recent conversations, Projects, project creation, archived projects | Capture pending. |
-| Settings | API Keys, Search & Weather, Image Generation, Communication Channels, Message Bus, Calendar Sources, Speech, Background Automation, Keyboard Shortcuts, Backups, Factory Reset | Capture pending; credential fields were not opened. |
-| Other navigation | Account, global search, notifications | Capture pending. |
-| Menus | File, Edit, View, Help | Captured from pre-fix process. |
-| Dialogs | Existing setup picker and historical Tasks/Jobs dialogs are shown above; Skills initialization error captured. Account/project editing, library file actions, provider verification, MCP actions, backup/restore, factory reset, calendar authorization, and approval/review dialogs | Remaining workspace dialogs need inspection. Destructive dialogs must not be confirmed. |
+| First-run setup | Introduction, Preflight, Users/Admin, Storage/Advanced Storage, local workspace and native folder picker, Local AI, Cloud AI, Defaults | All 12 historical first-run captures remain preserved. Current isolated Preflight and Local AI pages show deferred installation. Focused tests verify Finish validation without a model or token. Finish was not invoked; no account or model was created. |
+| Signed-in Chat | Main Chat, Blackboard, Context, Debug, conversation view | Only the empty shell captured before the user's Mistral conversation is available. No active conversation content was recorded; the shell does not establish end-to-end Chat behavior. |
+| Work: Tasks and Jobs | Current task/job pages; earlier initialization dialogs | Current captures show the deliberate disabled state. Earlier error captures remain historical. Scheduling stayed disabled; no real jobs were run. |
+| Work: Calendar | Month, Week, Day, Agenda, Sources, Categories, Settings, Sync | All eight listed pages captured on 2026-10-11. |
+| Work: Budget | Dashboard, Policies, History, Reports, Alerts, Channels | All six listed pages captured on 2026-10-11. Financial totals and history entries were redacted where visible. |
+| Knowledge | Library, Docs, Memory, RAG | Library and Docs are historical captures. No separate Memory route appeared. RAG was off and left unchanged; no separate RAG view was captured. |
+| Builder | Personas, Background personas, Providers, Tools, Skills | Current catalog captures are available. Skills displays an initialization error stating that metadata could not load; this is not a working Skills view. Provider credentials were not opened. |
+| Operations | Orchestration, Status, Handoffs, Intervention form, Health, Guardrails, MCP Servers/Add Server, Vector Store | Current captures cover the listed views. Forms were not submitted. Metrics, Traces, Alerts, Approvals, Audit Log, MCP Tools, and MCP Status remain uncovered. |
+| History | All Chats, Projects, project creation, archived projects | All Chats is empty. Projects reports it could not load; the visible form was not submitted. Creation and archived-project flows remain uncovered. |
+| Settings | API Keys, Search & Weather, Image Generation, Communication Channels, Message Bus, Calendar Sources, Speech providers, Background Automation, Keyboard Shortcuts, Backups, Factory Reset | Current captures cover the listed pages. Credentials and conversation metadata are masked. Automation remains disabled. Backup/restore and factory-reset actions were not run; the factory-reset page is a safe inspection only. |
+| Other navigation | Account, global search, notifications | Not yet captured. |
+| Menus | File, Edit, View, Help | Historical captures from 2026-10-10. |
+| Dialogs | Setup picker and setup pages; Skills initialization error; MCP add-server and Operations intervention forms; Factory Reset inspection; historical Tasks/Jobs errors | Forms were not submitted and destructive actions were not confirmed. Account/project editing, library file actions, provider verification, calendar authorization, and approval/review dialogs remain uncovered. |
 
 </details>
 
