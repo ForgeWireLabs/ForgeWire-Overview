@@ -75,17 +75,32 @@ Models can be useful and still be wrong, slow, unavailable, or replaced. ForgeWi
 
 *Projects workspace in a private GTK development build, captured in August 2026 with disposable sample data. This is the real workspace widget rendered with the application stylesheet and service-backed sample state; it is not a full-window capture of the current signed-in shell. A project groups chats, files, and instructions while the active persona remains authoritative.*
 
-The current conversation, persona, provider, tools and skills, knowledge, and task views still need clean captures and disclosure review. Their interfaces are described below where documentation and implementation support the claim; an unavailable preview is not replaced with a mockup.
+The signed-in tour remains in progress. Genuine captures from 2026-10-11 cover the corrected disabled Tasks and Jobs pages, Calendar and Budget views, several Operations surfaces, History, Settings, and Builder catalogs. The latest signed-in session recaptured Tasks and Jobs as explicitly disabled, with scheduling still off. The current Skills page displays an initialization error and is documented as unavailable. Fresh Knowledge captures show the empty Library with RAG off, the separate RAG Settings page, and a blank New Collection dialog that was not submitted; Docs shows a text-preview fallback. Current File/Edit/View/Help menus were captured after restart. The empty Chat shell has no visible composer or conversation, so Chat behavior remains unverified. No private conversation content was captured; conversation metadata shown in History and Notifications was redacted. The inventory below lists remaining route and dialog gaps.
 
-| View | Public preview |
+| View | Verified capture |
 | --- | --- |
-| Conversation and response review | Current signed-in capture pending |
-| Persona selection and capability controls | Current signed-in capture pending |
-| Provider and model controls | Current signed-in capture pending |
-| Tools and skills | Current signed-in capture pending |
-| Knowledge retrieval | Configured current-build capture pending |
-| Task review | Current signed-in capture pending |
-| Fabric operator and runner surfaces | Private development; not shown |
+| Work: Tasks and Jobs | Latest session: [Tasks disabled](assets/screenshots/signed-in-tour-2026-10-11/tasks-disabled-current-session.png); [Jobs disabled](assets/screenshots/signed-in-tour-2026-10-11/jobs-disabled-current-session.png). Earlier after-restart captures remain linked: [Tasks](assets/screenshots/signed-in-tour-2026-10-11/tasks-disabled-after-restart.png); [Jobs](assets/screenshots/signed-in-tour-2026-10-11/jobs-disabled-after-restart.png). Historical initialization errors remain labeled below. |
+| Work: Calendar and Budget | [Calendar Month](assets/screenshots/signed-in-tour-2026-10-11/calendar-month-current.png); [Budget Dashboard, redacted](assets/screenshots/signed-in-tour-2026-10-11/budget-dashboard-redacted.png). Full view inventory follows below. |
+| Builder | [Personas](assets/screenshots/signed-in-tour-2026-10-11/builder-personas-current.png); [Providers](assets/screenshots/signed-in-tour-2026-10-11/builder-providers-current.png); [Tools](assets/screenshots/signed-in-tour-2026-10-11/builder-tools-current.png); [Skills initialization error](assets/screenshots/signed-in-tour-2026-10-11/builder-skills-initialization-error-current.png). |
+| Knowledge | Latest session: [Library, 0 items and RAG off](assets/screenshots/signed-in-tour-2026-10-11/knowledge-library-empty-current-session.png); [blank New Collection dialog](assets/screenshots/signed-in-tour-2026-10-11/knowledge-new-collection-dialog-current-session.png) (not submitted); [RAG Settings](assets/screenshots/signed-in-tour-2026-10-11/settings-rag-current-session.png), with the main RAG switch off and no settings changed. Earlier after-restart [Library](assets/screenshots/signed-in-tour-2026-10-11/knowledge-library-empty-after-restart.png) and [Docs text-preview fallback](assets/screenshots/signed-in-tour-2026-10-11/knowledge-docs-after-restart.png) captures remain linked. Memory navigation is role-gated and absent for this account; it was not bypassed. |
+| Operations | [Orchestration](assets/screenshots/signed-in-tour-2026-10-11/operations-orchestration-current.png); [Status](assets/screenshots/signed-in-tour-2026-10-11/operations-orchestration-status-current.png); [Agent Activity, 0 active agents](assets/screenshots/signed-in-tour-2026-10-11/operations-agent-activity-current-session.png); [Handoffs](assets/screenshots/signed-in-tour-2026-10-11/operations-handoffs-current.png); [Intervention form](assets/screenshots/signed-in-tour-2026-10-11/operations-intervention-current.png); [Health after restart](assets/screenshots/signed-in-tour-2026-10-11/operations-observability-health-after-restart.png); [BenchLab, worker details and log paths redacted](assets/screenshots/signed-in-tour-2026-10-11/operations-benchlab-after-restart.png); [Guardrails](assets/screenshots/signed-in-tour-2026-10-11/operations-guardrails-current.png); [MCP Servers, 0 configured](assets/screenshots/signed-in-tour-2026-10-11/operations-mcp-servers-current.png); [Vector Store](assets/screenshots/signed-in-tour-2026-10-11/operations-vector-store-current.png). |
+| History | [All Chats empty after restart, sidebar metadata redacted](assets/screenshots/signed-in-tour-2026-10-11/history-all-chats-empty-after-restart-redacted.png); [Projects unavailable after restart](assets/screenshots/signed-in-tour-2026-10-11/history-all-projects-unavailable-after-restart.png). |
+| Settings and Notifications | [Settings navigation](assets/screenshots/signed-in-tour-2026-10-11/settings-menu-after-restart.png); [Knowledge Base & RAG Settings](assets/screenshots/signed-in-tour-2026-10-11/settings-rag-current-session.png), with RAG off and no settings changed; [Notifications empty, sidebar metadata redacted](assets/screenshots/signed-in-tour-2026-10-11/notifications-empty-after-restart-redacted.png); [API Keys, redacted](assets/screenshots/signed-in-tour-2026-10-11/settings-api-keys-redacted.png); [Background Automation disabled](assets/screenshots/signed-in-tour-2026-10-11/settings-background-automation-disabled.png). |
+| Conversation and response review | [Empty Chat shell after restart](assets/screenshots/signed-in-tour-2026-10-11/chat-empty-current.png) - no visible composer or conversation; conversation behavior is not established. The older pre-conversation capture remains labeled in the historical section. |
+| Global search and application menus | [Empty global-search palette](assets/screenshots/signed-in-tour-2026-10-11/global-search-empty-dialog-after-restart.png); [File](assets/screenshots/signed-in-tour-2026-10-11/file-menu-after-restart.png), [Edit](assets/screenshots/signed-in-tour-2026-10-11/edit-menu-after-restart.png), [View](assets/screenshots/signed-in-tour-2026-10-11/view-menu-after-restart.png), and [Help](assets/screenshots/signed-in-tour-2026-10-11/help-menu-after-restart.png) menus after restart. Older Knowledge and menu captures remain preserved below. |
+| Fabric operator and runner surfaces | Private development; not shown. |
+
+
+### Corrected first-run setup (isolated current build)
+
+These genuine captures show the corrected deferred-model path in a separate process using temporary configuration and data roots. The recommended local model remains uninstalled, and the guidance says it can be acquired after setup. No account was registered and no credential was entered. The Finish action was not invoked. The optional Cloud AI page showed masked configured-provider states, so it was not retained as a capture.
+
+| Step | Verified capture |
+| --- | --- |
+| Preflight | [Model installation can be deferred](assets/screenshots/current-build-2026-10/setup-09-preflight-deferred-model-current.jpg) — the recommended model is not installed, and setup can continue with the listed limitations. |
+| Providers / Local AI | [Local model remains uninstalled](assets/screenshots/current-build-2026-10/setup-10-local-model-deferred-current.jpg) — the wizard says setup can finish first and Chat stays unavailable until a local model or cloud Chat provider is configured. |
+
+The two captures verify the corrected guidance in the current source build. Finish completion without a model or token is verified by focused tests; this isolated run intentionally stopped before account creation.
 
 <details>
 <summary>Secondary preview: genuine setup screens from an internal build</summary>
@@ -101,6 +116,101 @@ These three images are actual setup screens from an internal development build. 
     <td colspan="2" valign="top"><strong>Local workspace</strong><br><img src="assets/screenshots/local-workspace.png" alt="Actual internal ForgeWire setup screen for choosing a local work folder" width="100%"></td>
   </tr>
 </table>
+
+</details>
+
+<details>
+<summary>Historical setup and partial signed-in captures (29 images)</summary>
+
+These genuine GTK captures were taken on 2026-10-10 from the `0.1.0` setup build and the older signed-in process. The setup run used a disposable profile and demo workspace; it did not register the synthetic administrator. Cloud credential fields were blank. The signed-in images are historical and predate the setup and Tasks/Jobs fixes; they do not establish current behavior. New signed-in captures are cropped to the application window and have the personal status text masked. The Chat shell was captured before the current conversation began. The Tools detail pane is masked, and the menus retain only the relevant menu area.
+
+### Earlier first-run sequence (12 images)
+
+The sequence shows the earlier setup validation mismatch: Preflight described model acquisition after setup, while Finish required an installed model or Hugging Face token. No model or token was used. The wizard now supports deferred installation; Chat stays unavailable until a local model is installed or a cloud Chat provider is configured. An uninstalled recommendation is not saved as an active Chat default. A Hugging Face token is only needed for gated or private model sources.
+
+![ForgeWire GTK setup introduction from a disposable profile](assets/screenshots/current-build-2026-10/setup-01-introduction.png)
+
+![ForgeWire GTK setup preflight from a disposable profile](assets/screenshots/current-build-2026-10/setup-02-preflight.png)
+
+![ForgeWire GTK administrator setup page with synthetic demo data](assets/screenshots/current-build-2026-10/setup-03-administrator-account.png)
+
+![ForgeWire GTK storage setup page](assets/screenshots/current-build-2026-10/setup-04-storage.png)
+
+![ForgeWire GTK advanced storage settings](assets/screenshots/current-build-2026-10/setup-04b-storage-advanced.png)
+
+![Native folder picker showing the disposable demo workspace](assets/screenshots/current-build-2026-10/setup-05a-workspace-picker.png)
+
+![ForgeWire GTK local workspace setup page](assets/screenshots/current-build-2026-10/setup-05-local-workspace.png)
+
+![ForgeWire GTK Local AI model selection page; selected model was not installed](assets/screenshots/current-build-2026-10/setup-06-providers-local-ai.png)
+
+![Lower section of the ForgeWire GTK local model catalog](assets/screenshots/current-build-2026-10/setup-06b-providers-local-ai-lower.png)
+
+![ForgeWire GTK optional cloud provider setup with blank credential fields](assets/screenshots/current-build-2026-10/setup-07-providers-cloud-top.png)
+
+![Lower section of the ForgeWire GTK optional cloud provider setup with blank credential fields](assets/screenshots/current-build-2026-10/setup-07b-providers-cloud-bottom.png)
+
+![ForgeWire GTK provider defaults page showing an unavailable saved provider](assets/screenshots/current-build-2026-10/setup-08-provider-defaults.png)
+
+### Additional signed-in screens (11 images; pre-fix process)
+
+The following screens were captured from the already signed-in process. The Chat shell was empty before the current conversation began. The Library was empty. The Documentation Browser displayed its text-preview fallback because WebKit was unavailable. The Providers page showed provider names only. The Skills page raised an initialization error. These captures document the observed UI and must not be read as proof that those functions are currently working.
+
+![Empty Chat shell captured before the current conversation started](assets/screenshots/signed-in-tour-2026-10-10/chat-empty-before-user-conversation.png)
+
+![File menu in the signed-in ForgeWire shell](assets/screenshots/signed-in-tour-2026-10-10/file-menu.png)
+
+![Edit menu in the signed-in ForgeWire shell](assets/screenshots/signed-in-tour-2026-10-10/edit-menu.png)
+
+![View menu in the signed-in ForgeWire shell](assets/screenshots/signed-in-tour-2026-10-10/view-menu.png)
+
+![Help menu in the signed-in ForgeWire shell](assets/screenshots/signed-in-tour-2026-10-10/help-menu.png)
+
+![Empty Knowledge Library](assets/screenshots/signed-in-tour-2026-10-10/knowledge-library.png)
+
+![Documentation Browser with its text-preview fallback](assets/screenshots/signed-in-tour-2026-10-10/knowledge-docs.png)
+
+![Builder persona catalog](assets/screenshots/signed-in-tour-2026-10-10/builder-personas.png)
+
+![Provider names without opening configuration or credential fields](assets/screenshots/signed-in-tour-2026-10-10/builder-providers.png)
+
+![Tools catalog with private detail pane masked](assets/screenshots/signed-in-tour-2026-10-10/builder-tools.png)
+
+![Skills page showing an initialization error](assets/screenshots/signed-in-tour-2026-10-10/builder-skills-initialization-error.png)
+
+### Earlier signed-in Tasks and Jobs states (6 images)
+
+These screens show initialization errors and the blank Work content area before the disabled-state fix. They are evidence of the earlier state, not the current Tasks or Jobs result.
+
+![Pre-fix ForgeWire Tasks view showing the task orchestration initialization error](assets/screenshots/signed-in-tour-2026-10-10/tasks-init-error-pre-fix.png)
+
+![Earlier ForgeWire Tasks view showing an initialization error](assets/screenshots/workspace-2026-10-10/01-work-task-initialization-error.jpg)
+
+![Close view of the earlier Tasks initialization error dialog](assets/screenshots/workspace-2026-10-10/01b-work-task-initialization-dialog.jpg)
+
+![Earlier Work area after dismissing the Tasks error dialog](assets/screenshots/workspace-2026-10-10/02-work-after-error-dialog.jpg)
+
+![Earlier ForgeWire Jobs view showing a scheduling error](assets/screenshots/workspace-2026-10-10/03-work-jobs-scheduling-error.jpg)
+
+![Close view of the earlier Jobs scheduling error dialog](assets/screenshots/workspace-2026-10-10/03b-work-jobs-error-dialog.jpg)
+
+### Navigation and dialog coverage
+
+| Surface | Screens and relevant dialogs | Verified coverage |
+| --- | --- | --- |
+| First-run setup | Introduction, Preflight, Users/Admin, Storage/Advanced Storage, local workspace and native folder picker, Local AI, Cloud AI, Defaults | All 12 historical first-run captures remain preserved. Current isolated Preflight and Local AI pages show deferred installation. Focused tests verify Finish validation without a model or token. Finish was not invoked; no account or model was created. |
+| Signed-in Chat | Main Chat, Blackboard, Context, Debug, conversation view | The current shell is empty and has no visible composer. No active conversation content was recorded; the shell does not establish end-to-end Chat behavior. |
+| Work: Tasks and Jobs | Current task/job pages; earlier initialization dialogs | Latest-session [Tasks](assets/screenshots/signed-in-tour-2026-10-11/tasks-disabled-current-session.png) and [Jobs](assets/screenshots/signed-in-tour-2026-10-11/jobs-disabled-current-session.png) captures show the deliberate disabled state. Earlier error captures remain historical. Scheduling stayed disabled; no real jobs were run. |
+| Work: Calendar | Month, Week, Day, Agenda, Sources, Categories, Settings, Sync | All eight listed pages captured on 2026-10-11. |
+| Work: Budget | Dashboard, Policies, History, Reports, Alerts, Channels | All six listed pages captured on 2026-10-11. Financial totals and history entries were redacted where visible. |
+| Knowledge | Library, Docs, Memory, RAG | Latest-session [Library](assets/screenshots/signed-in-tour-2026-10-11/knowledge-library-empty-current-session.png) reports 0 items with RAG left off; its [New Collection dialog](assets/screenshots/signed-in-tour-2026-10-11/knowledge-new-collection-dialog-current-session.png) was captured with blank fields and not submitted. The separate [RAG Settings](assets/screenshots/signed-in-tour-2026-10-11/settings-rag-current-session.png) page is reachable from the RAG status control; its main RAG switch remains off, automatic retrieval is on, and the context limit is 4,000 tokens. No settings were changed. Current [Docs](assets/screenshots/signed-in-tour-2026-10-11/knowledge-docs-after-restart.png) uses the text-preview fallback because WebKit is unavailable. Memory navigation is role-gated and absent for this account. Earlier captures remain preserved. |
+| Builder | Personas, Background personas, Providers, Tools, Skills | Current catalog captures are available. Skills displays an initialization error stating that metadata could not load; this is not a working Skills view. Provider credentials were not opened. |
+| Operations | Orchestration (Status, Agent Activity, Handoffs, Intervention), Observability (Health, BenchLab), Guardrails, MCP (Servers only; 0 configured), Vector Store | Current captures cover the listed views, including the refreshed Health and BenchLab pages and the latest-session [Agent Activity](assets/screenshots/signed-in-tour-2026-10-11/operations-agent-activity-current-session.png). The blank Add BenchLab host form is captured; no form was submitted. Worker diagnostics and log paths are redacted. Metrics, Traces, Alerts, Approvals, Audit Log, MCP Tools, and MCP Status were not surfaced in the current Operations navigation and remain uncovered. |
+| History | All Chats, Projects, project creation, archived projects | Current [All Chats](assets/screenshots/signed-in-tour-2026-10-11/history-all-chats-empty-after-restart-redacted.png) reports no stored conversations; the current-conversation label and timestamp in the sidebar are redacted. Current [Projects](assets/screenshots/signed-in-tour-2026-10-11/history-all-projects-unavailable-after-restart.png) says project access is unavailable until sign-in and project storage initialization; the blank project form was not submitted. Archived-project contents could not be verified while project storage was unavailable. |
+| Settings | API Keys, Search & Weather, Image Generation, Communication Channels, Message Bus, Calendar Sources, Speech providers, Background Automation, Keyboard Shortcuts, Backups, Factory Reset | Current captures cover the listed pages. Credentials and conversation metadata are masked. Automation remains disabled. Backup/restore and factory-reset actions were not run; the factory-reset page is a safe inspection only. |
+| Other navigation | Account, global search, notifications | The empty [global-search palette](assets/screenshots/signed-in-tour-2026-10-11/global-search-empty-dialog-after-restart.png) and [Notifications](assets/screenshots/signed-in-tour-2026-10-11/notifications-empty-after-restart-redacted.png) are captured. The account icon did not open a separate account page; Account remains uncovered. |
+| Menus | File, Edit, View, Help | Current captures from 2026-10-11 are linked above; older captures remain preserved. |
+| Dialogs | Setup picker and setup pages; Skills initialization error; MCP add-server and Operations intervention forms; blank BenchLab Add host form; blank New Collection dialog; empty global-search palette; Factory Reset inspection; historical Tasks/Jobs errors | Forms were not submitted and destructive actions were not confirmed. Account/project editing, library file actions, provider verification, calendar authorization, and approval/review dialogs remain uncovered. |
 
 </details>
 
@@ -178,6 +288,8 @@ These instructions apply only to a workspace that has already been installed and
 
 Provider credentials, account access, storage, and optional knowledge services are operator-managed. If a provider request fails, ask the operator to confirm the persona has access to an available provider. These steps describe the current private application path and may change before a public release.
 
+The first-run wizard can finish without an installed local model or cloud credentials. Chat remains unavailable until a local model is installed or a cloud Chat provider is configured. The wizard requires a Hugging Face token only for gated or private model sources.
+
 ## Who ForgeWire is for
 
 - **Operators** who need to understand where work runs, how it is configured, and where their decisions belong.
@@ -246,9 +358,9 @@ A public release should include supported-platform and installation guidance, se
 
 ## How ForgeWire is built
 
-ForgeWire is designed and developed by Jeremy Shows through ForgeWire Labs. Jeremy defines the problems, designs the architecture, establishes engineering constraints, and drives implementation, integration, debugging, and validation. His approach draws on a lifelong background in fabrication, mechanical systems, IT, and software development, with an emphasis on making complex systems work under real constraints.
+ForgeWire is designed and developed by [Jeremy Shows](https://github.com/JeremyShows) through [ForgeWire Labs](https://github.com/ForgeWireLabs). He defines the problems, designs the architecture, establishes engineering constraints, and drives implementation, integration, debugging, and validation. His approach draws on a lifelong background in fabrication, mechanical systems, IT, and software development, with an emphasis on making complex systems work under real constraints.
 
-AI models and coding agents are integral to that workflow, contributing across research, implementation, testing, review, and documentation. Jeremy directs that work, challenges assumptions, resolves conflicting recommendations, and evaluates results through code review, tests, experiments, and observed system behavior. The architecture, technical judgment, and responsibility for what ships remain his.
+AI models and coding agents contribute across research, architecture exploration, implementation, debugging, testing, review, and documentation. Jeremy directs that work, challenges assumptions, resolves conflicting recommendations, and evaluates results through code review, tests, experiments, and observed system behavior. The architecture, technical judgment, and responsibility for what ships remain his.
 
 ## Technical direction
 
