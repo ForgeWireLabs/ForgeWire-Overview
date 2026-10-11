@@ -75,16 +75,16 @@ Models can be useful and still be wrong, slow, unavailable, or replaced. ForgeWi
 
 *Projects workspace in a private GTK development build, captured in August 2026 with disposable sample data. This is the real workspace widget rendered with the application stylesheet and service-backed sample state; it is not a full-window capture of the current signed-in shell. A project groups chats, files, and instructions while the active persona remains authoritative.*
 
-The signed-in tour is in progress. Genuine captures now cover the Knowledge Library and Documentation Browser, Builder Personas and Providers, the Tools catalog, the Skills initialization error, and the File/Edit/View/Help menus. The open signed-in process is an older pre-fix build, so these images do not verify the corrected setup contract or Tasks/Jobs disabled state. Chat, Operations, History, Settings, and the corrected setup and Tasks/Jobs states still need fresh captures.
+The signed-in tour is in progress. Genuine captures cover the Knowledge Library and Documentation Browser, Builder Personas and Providers, the Tools catalog, the Skills initialization error, and the File/Edit/View/Help menus. A blank Chat shell was captured before the current conversation began; that conversation still needs a capture. The open signed-in process is an older pre-fix build, so it cannot verify the corrected setup contract or the Tasks/Jobs disabled state. Operations, History, Settings, and those corrected states remain pending.
 
 | View | Verified capture |
 | --- | --- |
-| Conversation and response review | Pending. The current Chat view has not been captured. |
+| Conversation and response review | [Empty Chat shell](assets/screenshots/signed-in-tour-2026-10-10/chat-empty-before-user-conversation.png) — captured before the current conversation began; the conversation itself remains pending. |
 | Personas | [Builder catalog](assets/screenshots/signed-in-tour-2026-10-10/builder-personas.png) — pre-fix running build. |
 | Providers | [Provider list](assets/screenshots/signed-in-tour-2026-10-10/builder-providers.png) — names only; configuration and credentials were not opened. |
 | Tools and skills | [Tools catalog](assets/screenshots/signed-in-tour-2026-10-10/builder-tools.png); [Skills initialization error](assets/screenshots/signed-in-tour-2026-10-10/builder-skills-initialization-error.png). The error is not a working Skills view. |
 | Knowledge | [Empty Library](assets/screenshots/signed-in-tour-2026-10-10/knowledge-library.png); [Documentation Browser](assets/screenshots/signed-in-tour-2026-10-10/knowledge-docs.png). RAG remains switched off and was not opened; no separate Memory page appears in this build's Knowledge navigation. |
-| Tasks and Jobs | Current disabled-state capture pending. Earlier pre-fix failures are retained and labeled below. |
+| Tasks and Jobs | [Pre-fix Tasks initialization error](assets/screenshots/signed-in-tour-2026-10-10/tasks-init-error-pre-fix.png); the earlier Tasks/Jobs captures remain historical. Current disabled-state captures are pending. |
 | File/Edit/View/Help menus | [File](assets/screenshots/signed-in-tour-2026-10-10/file-menu.png), [Edit](assets/screenshots/signed-in-tour-2026-10-10/edit-menu.png), [View](assets/screenshots/signed-in-tour-2026-10-10/view-menu.png), [Help](assets/screenshots/signed-in-tour-2026-10-10/help-menu.png). |
 | Fabric operator and runner surfaces | Private development; not shown |
 
@@ -106,9 +106,9 @@ These three images are actual setup screens from an internal development build. 
 </details>
 
 <details>
-<summary>Historical setup and partial signed-in captures (27 images)</summary>
+<summary>Historical setup and partial signed-in captures (29 images)</summary>
 
-These genuine GTK captures were taken on 2026-10-10 from the `0.1.0` setup build and the older signed-in process. The setup run used a disposable profile and demo workspace; it did not register the synthetic administrator. Cloud credential fields were blank. The signed-in images are historical and predate the setup and Tasks/Jobs fixes; they do not establish current behavior. Workspace images are cropped above the app's status footer; the Tools detail pane is masked, and the menus retain only the relevant menu area.
+These genuine GTK captures were taken on 2026-10-10 from the `0.1.0` setup build and the older signed-in process. The setup run used a disposable profile and demo workspace; it did not register the synthetic administrator. Cloud credential fields were blank. The signed-in images are historical and predate the setup and Tasks/Jobs fixes; they do not establish current behavior. New signed-in captures are cropped to the application window and have the personal status text masked. The Chat shell was captured before the current conversation began. The Tools detail pane is masked, and the menus retain only the relevant menu area.
 
 ### Earlier first-run sequence (12 images)
 
@@ -138,9 +138,11 @@ The sequence shows the earlier setup validation mismatch: Preflight described mo
 
 ![ForgeWire GTK provider defaults page showing an unavailable saved provider](assets/screenshots/current-build-2026-10/setup-08-provider-defaults.png)
 
-### Additional signed-in screens (10 images; pre-fix process)
+### Additional signed-in screens (11 images; pre-fix process)
 
-The following screens were captured from the already signed-in process. The Library was empty. The Documentation Browser displayed its text-preview fallback because WebKit was unavailable. The Providers page showed provider names only. The Skills page raised an initialization error. These captures document the observed UI and must not be read as proof that those functions are currently working.
+The following screens were captured from the already signed-in process. The Chat shell was empty before the current conversation began. The Library was empty. The Documentation Browser displayed its text-preview fallback because WebKit was unavailable. The Providers page showed provider names only. The Skills page raised an initialization error. These captures document the observed UI and must not be read as proof that those functions are currently working.
+
+![Empty Chat shell captured before the current conversation started](assets/screenshots/signed-in-tour-2026-10-10/chat-empty-before-user-conversation.png)
 
 ![File menu in the signed-in ForgeWire shell](assets/screenshots/signed-in-tour-2026-10-10/file-menu.png)
 
@@ -162,9 +164,11 @@ The following screens were captured from the already signed-in process. The Libr
 
 ![Skills page showing an initialization error](assets/screenshots/signed-in-tour-2026-10-10/builder-skills-initialization-error.png)
 
-### Earlier signed-in Tasks and Jobs states (5 images)
+### Earlier signed-in Tasks and Jobs states (6 images)
 
 These screens show initialization errors and the blank Work content area before the disabled-state fix. They are evidence of the earlier state, not the current Tasks or Jobs result.
+
+![Pre-fix ForgeWire Tasks view showing the task orchestration initialization error](assets/screenshots/signed-in-tour-2026-10-10/tasks-init-error-pre-fix.png)
 
 ![Earlier ForgeWire Tasks view showing an initialization error](assets/screenshots/workspace-2026-10-10/01-work-task-initialization-error.jpg)
 
@@ -181,8 +185,8 @@ These screens show initialization errors and the blank Work content area before 
 | Surface | Screens and relevant dialogs | Verified coverage |
 | --- | --- | --- |
 | First-run setup | Introduction, Preflight, Users/Admin, Storage/Advanced Storage, local workspace and native folder picker, Local AI, Cloud AI, Defaults | 12 historical captures; corrected no-model/no-token flow still needs an isolated current capture. |
-| Signed-in Chat | Main Chat, Blackboard, Context, Debug, conversation view | Capture pending. |
-| Work | Tasks and Jobs | Earlier initialization errors captured; current disabled-state captures pending. |
+| Signed-in Chat | Main Chat, Blackboard, Context, Debug, conversation view | Empty shell captured before the current conversation; active conversation capture pending. |
+| Work | Tasks and Jobs | Pre-fix Tasks initialization error captured; current disabled-state captures pending. Earlier Tasks/Jobs failures are historical only. |
 | Work | Calendar and Budget | Capture pending. |
 | Knowledge | Library, Docs | Captured from pre-fix process. |
 | Knowledge | Memory, RAG | No separate Memory route appeared. RAG switch was off and left unchanged; route remains unverified. |
