@@ -20,7 +20,7 @@
 
 > **Private development.** ForgeWire is not available to download or install. This repository is the public project overview; it does not contain the application source, a supported setup path, or a release date.
 
-ForgeWire is an application under development for work that uses models, personas, tools, skills, saved context, and task execution. The application records state, separates responsibilities, and gives people a way to review work and handle failures.
+ForgeWire is a modular environment being built to coordinate models, personas, tools, skills, memory, task execution, and compute around real work. The project starts from a systems-first premise: useful AI depends on the boundaries, state, recovery paths, and human decisions around a model—not only on the model itself.
 
 **Start here:** [What ForgeWire is](#what-forgewire-is) · [Application preview](#application-preview) · [How the system fits together](#how-the-system-fits-together) · [What a user can do](#what-a-user-can-do-in-a-private-workspace) · [Current status](#current-status) · [Follow release updates](#follow-release-updates)
 
@@ -30,7 +30,7 @@ ForgeWire is an application under development for work that uses models, persona
 | --- | --- |
 | Try ForgeWire | There is no public build, installer, or supported installation path yet. |
 | Understand the product | Read the system overview and diagrams below. Each diagram labels current composition separately from work in progress. |
-| See the interface | View 12 first-run captures and five earlier signed-in workspace captures below. The workspace captures predate the scheduler fix; the navigation coverage table marks every screen still awaiting a current capture. |
+| See the interface | View a genuine Projects workspace capture below. Other product views are listed with their capture status; setup screens remain secondary. |
 | Follow a future release | Use **Watch → Custom → Releases** on this repository, or visit [Releases](https://github.com/ForgeWireLabs/ForgeWire-Overview/releases). No date has been announced. |
 | Explore related public work | Visit [ForgeWire Labs](https://github.com/ForgeWireLabs), [SCOUT-2](https://github.com/ForgeWireLabs/SCOUT-2), [RepoPact Core](https://github.com/ForgeWireLabs/repopact-core), or [ForgeLink](https://github.com/JeremyShows/ForgeLink). Their availability and terms are described in their own repositories. |
 
@@ -38,13 +38,13 @@ ForgeWire is an application under development for work that uses models, persona
 
 ## Why ForgeWire exists
 
-ForgeWire starts with the work a person needs to do. A request may involve a model, saved context, a tool, or several steps. The person should be able to see the result and review any proposed action.
+Most assistants are organized around a model and a conversation window. ForgeWire is being organized around the work: understanding a request, selecting relevant capabilities, preserving useful context, coordinating bounded steps, and returning an outcome a person can review.
 
-Different models, software, data, and machines can handle different parts of a request. ForgeWire assigns those parts to specific services and exposes failures when a provider or machine is unavailable.
+The aim is not to make one model pretend to do everything or to replace human judgment. The aim is to coordinate different models, software, data, and compute within visible responsibilities—and to make the system useful when a provider, dependency, or machine is constrained.
 
 ## What ForgeWire is
 
-ForgeWire is an application and runtime with components for conversation, model access, tools, state, and execution. Each component has a defined job:
+ForgeWire is an application and runtime for coordinating intelligent work. It is not a single chatbot, an autonomous agent with blanket authority, or a public model-hosting service. Its capabilities are divided among components with different jobs:
 
 | Part | Responsibility | Maturity in the current private application |
 | --- | --- | --- |
@@ -65,136 +65,109 @@ Model and provider choices should remain replaceable. Local, hosted, and special
 
 > **Agentic systems are systems first and models second.**
 >
-> A system remains useful under failure when it can degrade gracefully, keep ownership clear, preserve audit trails, and replace a model or execution layer without losing the work. A benchmark score cannot measure all of that.
+> Survivability under deployment—graceful degradation, layered ownership, parity paths, audit trails, and replaceable substrates—is the property that determines whether a system is useful, not benchmark scores on a model card.
 
-Models can be wrong, slow, or unavailable. ForgeWire keeps responsibility for state and actions outside the model. Some recovery paths are implemented today; others remain under development.
+Models can be useful and still be wrong, slow, unavailable, or replaced. ForgeWire treats them as one part of a larger system that must make state and ownership visible, preserve human control, and expose the limits of its current recovery paths. This thesis is an engineering direction; it is not a claim that every listed property is complete today.
 
 ## Application preview
 
-These captures show ForgeWire's actual GTK first-run setup and its native workspace folder picker, taken on 2026-10-10 from the `0.1.0` development build. Setup used an isolated disposable profile, a synthetic **Demo Operator** administrator profile, and a generic demo workspace. Cloud provider fields were left blank. No production profile or provider credentials were used.
+![Native ForgeWire Projects workspace showing sample projects, shared instructions, a file list, and associated chats](assets/screenshots/projects-workspace-development.png)
 
-![ForgeWire GTK setup introduction, 0.1.0 development build with disposable demo data](assets/screenshots/current-build-2026-10/setup-01-introduction.png)
+*Projects workspace in a private GTK development build, captured in August 2026 with disposable sample data. This is the real workspace widget rendered with the application stylesheet and service-backed sample state; it is not a full-window capture of the current signed-in shell. A project groups chats, files, and instructions while the active persona remains authoritative.*
 
-*ForgeWire GTK first-run introduction in the `0.1.0` development build, captured with a disposable demo profile.*
+The current conversation, persona, provider, tools and skills, knowledge, and task views still need clean captures and disclosure review. Their interfaces are described below where documentation and implementation support the claim; an unavailable preview is not replaced with a mockup.
 
-![ForgeWire GTK setup preflight showing local hardware and model availability, 0.1.0 development build with disposable demo data](assets/screenshots/current-build-2026-10/setup-02-preflight.png)
-
-*ForgeWire GTK preflight in the `0.1.0` development build, captured with a disposable demo profile. Hardware values are detected from the capture machine.*
+| View | Public preview |
+| --- | --- |
+| Conversation and response review | Current signed-in capture pending |
+| Persona selection and capability controls | Current signed-in capture pending |
+| Provider and model controls | Current signed-in capture pending |
+| Tools and skills | Current signed-in capture pending |
+| Knowledge retrieval | Configured current-build capture pending |
+| Task review | Current signed-in capture pending |
+| Fabric operator and runner surfaces | Private development; not shown |
 
 <details>
-<summary>Remaining setup captures (10 images)</summary>
+<summary>Secondary preview: genuine setup screens from an internal build</summary>
 
-The 12 screenshots cover every setup step. The introduction and preflight screens are shown above. Each remaining image is a genuine capture from the same ForgeWire `0.1.0` GTK development build and disposable demo profile. Images are shown separately so the setup text remains readable.
+These three images are actual setup screens from an internal development build. They show setup concepts, not a finished product tour or a public installer.
 
-### Administrator account
-
-![ForgeWire GTK administrator account setup page, 0.1.0 development build with disposable demo data](assets/screenshots/current-build-2026-10/setup-03-administrator-account.png)
-
-*Users step in the ForgeWire GTK `0.1.0` development build, filled with a disposable administrator profile.*
-
-### Storage
-
-![ForgeWire GTK storage setup page, 0.1.0 development build with disposable demo data](assets/screenshots/current-build-2026-10/setup-04-storage.png)
-
-*Storage choices in the ForgeWire GTK `0.1.0` development build, captured with a disposable demo profile.*
-
-![ForgeWire GTK advanced storage settings, 0.1.0 development build with disposable demo data](assets/screenshots/current-build-2026-10/setup-04b-storage-advanced.png)
-
-*Advanced storage settings in the ForgeWire GTK `0.1.0` development build, captured with a disposable demo profile.*
-
-### Local workspace
-
-![Windows folder picker opened by ForgeWire GTK setup at the synthetic demo folder, 0.1.0 development build with disposable demo data](assets/screenshots/current-build-2026-10/setup-05a-workspace-picker.png)
-
-*Windows folder picker opened from the ForgeWire GTK `0.1.0` development build, showing only the disposable demo workspace.*
-
-![ForgeWire GTK local workspace setup page showing the synthetic demo folder, 0.1.0 development build with disposable demo data](assets/screenshots/current-build-2026-10/setup-05-local-workspace.png)
-
-*Local workspace scope in the ForgeWire GTK `0.1.0` development build, set to a generic disposable demo folder.*
-
-### Providers and defaults
-
-![ForgeWire GTK local AI model selection page, 0.1.0 development build with disposable demo data](assets/screenshots/current-build-2026-10/setup-06-providers-local-ai.png)
-
-*Local AI choices in the ForgeWire GTK `0.1.0` development build, captured with a disposable demo profile. The selected model is not installed on the capture machine.*
-
-![ForgeWire GTK lower local model catalog, 0.1.0 development build with disposable demo data](assets/screenshots/current-build-2026-10/setup-06b-providers-local-ai-lower.png)
-
-*Lower local model catalog in the ForgeWire GTK `0.1.0` development build, captured with a disposable demo profile. The listed models are not installed on the capture machine.*
-
-![ForgeWire GTK optional cloud provider setup page, upper section, 0.1.0 development build with disposable demo data](assets/screenshots/current-build-2026-10/setup-07-providers-cloud-top.png)
-
-*Optional cloud providers in the ForgeWire GTK `0.1.0` development build, captured with a disposable demo profile. All credential fields are blank.*
-
-![ForgeWire GTK optional cloud provider setup page, lower section, 0.1.0 development build with disposable demo data](assets/screenshots/current-build-2026-10/setup-07b-providers-cloud-bottom.png)
-
-*Lower section of the cloud provider page in the ForgeWire GTK `0.1.0` development build, captured with a disposable demo profile. All credential fields are blank.*
-
-![ForgeWire GTK provider defaults page with the current saved-provider warning, 0.1.0 development build with disposable demo data](assets/screenshots/current-build-2026-10/setup-08-provider-defaults.png)
-
-*Provider defaults in the ForgeWire GTK `0.1.0` development build, captured with a disposable demo profile. The image preserves the visible warning that the saved `openai` choice is unavailable.*
+<table>
+  <tr>
+    <td width="50%" valign="top"><strong>Welcome</strong><br><img src="assets/screenshots/first-run-welcome.png" alt="Actual ForgeWire first-run setup welcome screen from an internal build" width="100%"></td>
+    <td width="50%" valign="top"><strong>Storage options</strong><br><img src="assets/screenshots/storage-options.png" alt="Actual internal ForgeWire setup screen describing local desktop and shared storage choices" width="100%"></td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top"><strong>Local workspace</strong><br><img src="assets/screenshots/local-workspace.png" alt="Actual internal ForgeWire setup screen for choosing a local work folder" width="100%"></td>
+  </tr>
+</table>
 
 </details>
 
-### Signed-in workspace: earlier Tasks and Jobs state
+<details>
+<summary>Archived first-run and earlier workspace captures (17 images)</summary>
 
-These five captures show the running ForgeWire development workspace on 2026-10-10 with the existing local account; the checked-out source reported version `0.2.0`. They predate the scheduler-state change below. Tasks and Jobs showed initialization-error dialogs in that run. The three full-window images are cropped to the ForgeWire application window and above the status footer, removing the local account name, provider/voice settings, and surrounding desktop. The two close-ups contain only the dialogs.
+These genuine GTK captures were taken on 2026-10-10 from the `0.1.0` setup build and `0.2.0` signed-in build. The setup run used a disposable profile and demo workspace; it did not register the synthetic administrator. Cloud credential fields were blank. The signed-in images are historical and predate the Tasks/Jobs disabled-state change. The three full-window workspace images are cropped to the app window and above its status footer; the two close-ups contain only their dialogs.
 
-![ForgeWire development workspace showing the Work navigation and pre-remediation task initialization error](assets/screenshots/workspace-2026-10-10/01-work-task-initialization-error.jpg)
+### Earlier first-run sequence (12 images)
 
-*Earlier Tasks view, captured on 2026-10-10. The application-window crop removes the status footer and surrounding desktop.*
+The sequence shows the earlier setup validation mismatch: Preflight described model acquisition after setup, while Finish required an installed model or Hugging Face token. No model or token was used. The wizard now supports deferred installation; Chat stays unavailable until a local model is installed or a cloud Chat provider is configured. An uninstalled recommendation is not saved as an active Chat default. A Hugging Face token is only needed for gated or private model sources.
 
-![Close capture of the ForgeWire task initialization error dialog](assets/screenshots/workspace-2026-10-10/01b-work-task-initialization-dialog.jpg)
+![ForgeWire GTK setup introduction from a disposable profile](assets/screenshots/current-build-2026-10/setup-01-introduction.png)
 
-*Close view of the earlier initialization error dialog; no account or provider details are present.*
+![ForgeWire GTK setup preflight from a disposable profile](assets/screenshots/current-build-2026-10/setup-02-preflight.png)
 
-![ForgeWire Work area after dismissing the task initialization error](assets/screenshots/workspace-2026-10-10/02-work-after-error-dialog.jpg)
+![ForgeWire GTK administrator setup page with synthetic demo data](assets/screenshots/current-build-2026-10/setup-03-administrator-account.png)
 
-*After dismissing the earlier Tasks dialog, the Work content area was blank in this capture. The application-window crop removes the status footer and surrounding desktop.*
+![ForgeWire GTK storage setup page](assets/screenshots/current-build-2026-10/setup-04-storage.png)
 
-![ForgeWire development workspace showing the Jobs navigation and pre-remediation scheduling error](assets/screenshots/workspace-2026-10-10/03-work-jobs-scheduling-error.jpg)
+![ForgeWire GTK advanced storage settings](assets/screenshots/current-build-2026-10/setup-04b-storage-advanced.png)
 
-*Earlier Jobs view, captured on 2026-10-10. The application-window crop removes the status footer and surrounding desktop.*
+![Native folder picker showing the disposable demo workspace](assets/screenshots/current-build-2026-10/setup-05a-workspace-picker.png)
 
-![Close capture of the ForgeWire Jobs scheduling error dialog](assets/screenshots/workspace-2026-10-10/03b-work-jobs-error-dialog.jpg)
+![ForgeWire GTK local workspace setup page](assets/screenshots/current-build-2026-10/setup-05-local-workspace.png)
 
-*Close view of the earlier Jobs initialization error dialog; no account or provider details are present.*
+![ForgeWire GTK Local AI model selection page; selected model was not installed](assets/screenshots/current-build-2026-10/setup-06-providers-local-ai.png)
 
-### Setup capture notes
+![Lower section of the ForgeWire GTK local model catalog](assets/screenshots/current-build-2026-10/setup-06b-providers-local-ai-lower.png)
 
-The setup screenshots show a run made before the deferred-model validation fix. The wizard reached Provider Defaults but did not complete; the synthetic administrator profile was not registered. Preflight said the recommended Bonsai 8B model could be installed after setup, while Finish still required an installed model or a Hugging Face token. The selected model was not installed, and no token was entered. The saved `openai` default was also reported as unavailable. The source change now allows setup to finish without either requirement and explains that Chat remains unavailable until a local model is installed or a cloud Chat provider is configured. These images preserve the earlier run and do not depict the corrected screen.
+![ForgeWire GTK optional cloud provider setup with blank credential fields](assets/screenshots/current-build-2026-10/setup-07-providers-cloud-top.png)
 
-The app's source now distinguishes an intentional scheduler opt-out and renders a disabled-state page for Tasks and Jobs. That result has not yet been captured in a signed-in window. The five existing workspace images remain historical evidence of the prior error state.
+![Lower section of the ForgeWire GTK optional cloud provider setup with blank credential fields](assets/screenshots/current-build-2026-10/setup-07b-providers-cloud-bottom.png)
 
-### Signed-in navigation and dialog coverage
+![ForgeWire GTK provider defaults page showing an unavailable saved provider](assets/screenshots/current-build-2026-10/setup-08-provider-defaults.png)
 
-This inventory follows the GTK navigation surfaces. “Not captured” means the page was not reached in the screenshot run; it is not a claim that the screen is broken or working.
+### Earlier signed-in Tasks and Jobs states (5 images)
 
-| Surface | Distinct screens and relevant dialogs | Capture status |
+These screens show initialization errors and the blank Work content area before the disabled-state fix. They are evidence of the earlier state, not the current Tasks or Jobs result.
+
+![Earlier ForgeWire Tasks view showing an initialization error](assets/screenshots/workspace-2026-10-10/01-work-task-initialization-error.jpg)
+
+![Close view of the earlier Tasks initialization error dialog](assets/screenshots/workspace-2026-10-10/01b-work-task-initialization-dialog.jpg)
+
+![Earlier Work area after dismissing the Tasks error dialog](assets/screenshots/workspace-2026-10-10/02-work-after-error-dialog.jpg)
+
+![Earlier ForgeWire Jobs view showing a scheduling error](assets/screenshots/workspace-2026-10-10/03-work-jobs-scheduling-error.jpg)
+
+![Close view of the earlier Jobs scheduling error dialog](assets/screenshots/workspace-2026-10-10/03b-work-jobs-error-dialog.jpg)
+
+### Navigation and dialog coverage
+
+| Surface | Screens and relevant dialogs | Verified coverage |
 | --- | --- | --- |
-| First-run setup | Introduction, Preflight, Users, Admin, Storage, Advanced Storage, local workspace, native folder picker, Local AI, Cloud AI, Defaults | 12 first-run images present; these show the pre-fix deferred-model validation behavior. |
-| Chat | Main Chat and conversation view | Not captured. |
-| Work | Tasks and Jobs | Earlier initialization-error states captured; current disabled-state screens still need recapturing. |
-| Work | Calendar and Budget | Not captured. |
-| Knowledge | Library, Memory, Docs, RAG Settings | Not captured. |
-| Builder | Personas, Providers, Tools, Skills | Not captured. |
-| Operations | Orchestration; Health, Metrics, Traces, Alerts; Guardrails, Approvals, Audit Log; MCP Servers, MCP Tools, MCP Status; Vector Store | Not captured. |
-| History | All Chats, recent conversations, Projects, project creation, archived projects | Not captured. |
-| Settings | API Keys, Search & Weather, Image Generation, Communication Channels, Message Bus, Calendar Sources, Speech, Background Automation, Keyboard Shortcuts, Backups, Factory Reset | Not captured. No credential fields were opened during the capture run. |
-| Other navigation | Account, global search, notifications, File/Edit/View/Help menus | Not captured. |
-| Dialogs | Advanced Storage and the native folder picker are present in the first-run set; prior Tasks and Jobs initialization dialogs are shown above. Account/project editing, library file actions, provider verification, MCP server actions, backup/restore, factory reset, calendar authorization, and approval/review dialogs remain to inspect. | Remaining workspace dialogs not captured. |
+| First-run setup | Introduction, Preflight, Users/Admin, Storage/Advanced Storage, local workspace and native folder picker, Local AI, Cloud AI, Defaults | 12 historical captures; corrected no-model/no-token flow still needs a current capture. |
+| Signed-in Chat | Main Chat and conversation view | Current capture pending. |
+| Work | Tasks and Jobs | Earlier initialization errors captured; current disabled-state captures pending. |
+| Work | Calendar and Budget | Capture pending. |
+| Knowledge | Library, Memory, Docs, RAG Settings | Capture pending. |
+| Builder | Personas, Providers, Tools, Skills | Capture pending. |
+| Operations | Orchestration; Health, Metrics, Traces, Alerts; Guardrails, Approvals, Audit Log; MCP Servers, MCP Tools, MCP Status; Vector Store | Capture pending. |
+| History | All Chats, recent conversations, Projects, project creation, archived projects | Capture pending. |
+| Settings | API Keys, Search & Weather, Image Generation, Communication Channels, Message Bus, Calendar Sources, Speech, Background Automation, Keyboard Shortcuts, Backups, Factory Reset | Capture pending; credential fields were not opened. |
+| Other navigation | Account, global search, notifications, File/Edit/View/Help menus | Capture pending. |
+| Dialogs | Existing setup picker and historical Tasks/Jobs dialogs are shown above. Account/project editing, library file actions, provider verification, MCP actions, backup/restore, factory reset, calendar authorization, and approval/review dialogs | Remaining workspace dialogs need inspection. Destructive dialogs must not be confirmed. |
 
-## Using a private development build
-
-These notes describe the current internal setup flow for invited testers. ForgeWire has no public installer or supported public installation path.
-
-1. Review the preflight page for detected hardware and installed models.
-2. Create an administrator account for the isolated workspace. Use a dedicated demo identity when capturing or evaluating the interface.
-3. Choose storage. Local SQLite is suited to a single-machine trial. Shared or custom storage needs operator configuration.
-4. Choose a local workspace folder. Keep runner-accessible demo files in that folder.
-5. Finish without a local model or Hugging Face token if you want to defer acquisition. After setup, install a model from Model Library. A token is needed only for gated or private model sources.
-6. Cloud provider credentials are optional in the wizard. If neither a local model nor a cloud Chat provider is configured, Chat remains unavailable until one is added.
-7. Review the eligible provider defaults and finish setup. An uninstalled local model is not saved as an active Chat default.
+</details>
 
 ## How the system fits together
 
@@ -254,7 +227,7 @@ The current user guide supports reviewing tasks produced by configured workflows
 
 Source: [`task-recovery.mmd`](assets/diagrams/task-recovery.mmd) · [SVG export](assets/diagrams/task-recovery.svg).
 
-**Configuration-dependent path:** when scheduling is enabled and initialized, open the task area, select a task, and review its description, status, and available actions. The task UI does not provide general task creation, and its review controls do not imply an automated recovery path. In the captured 2026-10-10 workspace, Tasks and Jobs did not initialize; the current source now distinguishes an intentional disabled configuration, but the new screen has not been recaptured.
+**Current private-workspace path:** open the task area, select a task, and review its description, status, and available actions. Ask the workspace operator which workflow creates tasks. The task UI does not provide general task creation, and its review controls do not imply an automated recovery path.
 
 ## What a user can do in a private workspace
 
@@ -266,9 +239,11 @@ These instructions apply only to a workspace that has already been installed and
 4. **Start a conversation.** Open the conversation workspace, send a short request, and review the response before acting on recommendations.
 5. **Organize related chats in a project.** Under **History → Projects**, create a workspace for shared instructions and files. Project context supplements the active persona; it does not replace persona policy or capability grants.
 6. **Use knowledge features when configured.** If retrieval is enabled, the workspace may allow document upload and knowledge-base queries. Check indexing and use the query test view to verify what was retrieved.
-7. **Review tasks when scheduling is available.** Tasks and Jobs require scheduling to be enabled and initialized. If the workspace shows them as disabled, ask its operator to review `job_scheduling.enabled` and the configured job store. The UI does not currently provide general task creation.
+7. **Review tasks.** Open the task area and select a task created by a configured workflow. Review its description, status, and available actions. The UI does not currently provide general task creation.
 
 Provider credentials, account access, storage, and optional knowledge services are operator-managed. If a provider request fails, ask the operator to confirm the persona has access to an available provider. These steps describe the current private application path and may change before a public release.
+
+The first-run wizard can finish without an installed local model or cloud credentials. Chat remains unavailable until a local model is installed or a cloud Chat provider is configured. The wizard requires a Hugging Face token only for gated or private model sources.
 
 ## Who ForgeWire is for
 
@@ -281,7 +256,7 @@ ForgeWire is not currently a hosted service, supported enterprise deployment, or
 
 ## Built around useful failure and human authority
 
-Providers, dependencies, hardware, and remote connections can fail. ForgeWire aims to show those failures clearly and keep decisions about further action with the operator.
+ForgeWire is developed around the assumption that providers, dependencies, hardware, and remote connections can fail. The system should make that state inspectable and keep action authority explicit.
 
 The engineering goals include:
 
@@ -296,9 +271,9 @@ Those are design requirements, not blanket assurances about current product cove
 
 ## Research direction
 
-ForgeWire Labs also researches bounded recurrent reasoning, task-local cognitive control, continual learning, adaptive routing, calibrated fusion, specialist models, hybrid language and state models, evaluation and replay, persistent agency, and temporal continuity.
+ForgeWire provides a product path for selected research from ForgeWire Labs. Current areas of interest include bounded recurrent reasoning, task-local cognitive control, continual learning, adaptive routing, calibrated fusion, specialist models, hybrid language and state models, evaluation and replay, persistent agency, and temporal continuity.
 
-Research ideas are tested separately before they are considered for the application. That work includes baseline comparisons, failure analysis, and limited trials.
+Research is not automatically product capability. Experimental work should move through isolation, baseline comparison, controlled evaluation, failure analysis, observe-only integration, and limited canary use before production adoption is considered.
 
 ## Project lineage
 
@@ -308,10 +283,10 @@ The project evolved from a multi-agent assistant toward a broader application wi
 
 ## Related work
 
-- **ForgeWire Fabric**: private distributed execution and control-plane development associated with ForgeWire. Current and future development is proprietary unless a specific distribution says otherwise. Historical copies previously distributed under Apache License 2.0 remain governed by the terms that accompanied those copies; their granted rights are not revoked here.
-- [SCOUT-2](https://github.com/ForgeWireLabs/SCOUT-2): an earlier multi-agent assistant and part of the public project lineage.
-- [ForgeWire Labs](https://github.com/ForgeWireLabs): independent engineering and applied AI research.
-- [RepoPact Core](https://github.com/ForgeWireLabs/repopact-core) and [ForgeLink](https://github.com/JeremyShows/ForgeLink): separately maintained public projects. Consult their repositories for their own status and terms.
+- **ForgeWire Fabric** — private distributed execution and control-plane development associated with ForgeWire. Current and future development is proprietary unless a specific distribution says otherwise. Historical copies previously distributed under Apache License 2.0 remain governed by the terms that accompanied those copies; their granted rights are not revoked here.
+- [SCOUT-2](https://github.com/ForgeWireLabs/SCOUT-2) — an earlier multi-agent assistant and part of the public project lineage.
+- [ForgeWire Labs](https://github.com/ForgeWireLabs) — independent engineering and applied AI research.
+- [RepoPact Core](https://github.com/ForgeWireLabs/repopact-core) and [ForgeLink](https://github.com/JeremyShows/ForgeLink) — separately maintained public projects. Consult their repositories for their own status and terms.
 
 ## Current status
 
@@ -338,14 +313,14 @@ A public release should include supported-platform and installation guidance, se
 
 ## How ForgeWire is built
 
-ForgeWire is an engineering and research effort led by [Jeremy Shows](https://github.com/JeremyShows) through [ForgeWire Labs](https://github.com/ForgeWireLabs). AI systems contribute materially across research, architecture exploration, implementation, debugging, testing, review, and documentation. Jeremy works directly across that lifecycle, makes technical and integration decisions, challenges proposed solutions, and retains responsibility for validation and acceptance.
+ForgeWire is designed and developed by [Jeremy Shows](https://github.com/JeremyShows) through [ForgeWire Labs](https://github.com/ForgeWireLabs). He defines the problems, designs the architecture, establishes engineering constraints, and drives implementation, integration, debugging, and validation. His approach draws on a lifelong background in fabrication, mechanical systems, IT, and software development, with an emphasis on making complex systems work under real constraints.
 
-The work draws on open research, open-source software, commercial AI tools, and established systems engineering. It does not claim unaided authorship or delegate technical responsibility wholesale to autonomous agents.
+AI models and coding agents contribute across research, architecture exploration, implementation, debugging, testing, review, and documentation. Jeremy directs that work, challenges assumptions, resolves conflicting recommendations, and evaluates results through code review, tests, experiments, and observed system behavior. The architecture, technical judgment, and responsibility for what ships remain his.
 
 ## Technical direction
 
-Work across ForgeWire and adjacent components has included **Rust, Python, TypeScript, GTK, React, PostgreSQL, SQLite, and rqlite**, alongside structured messaging and local or hosted model-provider integrations. This lists technologies used across the private work. It does not mean they are all present in one build or available for public deployment. These are replaceable choices, not the identity of the system.
+Work across ForgeWire and adjacent components has included **Rust, Python, TypeScript, GTK, React, PostgreSQL, SQLite, and rqlite**, alongside structured messaging and local or hosted model-provider integrations. This is a high-level inventory across a broader private effort—not a compatibility list, deployment guide, or promise that each technology is currently composed in the application. These are replaceable choices, not the identity of the system.
 
 ---
 
-> ForgeWire is being built so people can see what happened, review actions, and continue work after a failure.
+> Most assistants optimize for conversation. ForgeWire is being built to make AI-assisted work more inspectable, bounded, recoverable, and useful under real constraints.
