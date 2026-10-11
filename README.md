@@ -75,7 +75,7 @@ Models can be useful and still be wrong, slow, unavailable, or replaced. ForgeWi
 
 *Projects workspace in a private GTK development build, captured in August 2026 with disposable sample data. This is the real workspace widget rendered with the application stylesheet and service-backed sample state; it is not a full-window capture of the current signed-in shell. A project groups chats, files, and instructions while the active persona remains authoritative.*
 
-The signed-in tour is in progress. Genuine captures cover the Knowledge Library and Documentation Browser, Builder Personas and Providers, the Tools catalog, the Skills initialization error, and the File/Edit/View/Help menus. A blank Chat shell was captured before the current conversation began; that conversation still needs a capture. The open signed-in process is an older pre-fix build, so it cannot verify the corrected setup contract or the Tasks/Jobs disabled state. Operations, History, Settings, and those corrected states remain pending.
+The signed-in tour is in progress. Genuine captures cover the Knowledge Library and Documentation Browser, Builder Personas and Providers, the Tools catalog, the Skills initialization error, and the File/Edit/View/Help menus. A blank Chat shell was captured before the current conversation began; that conversation still needs a capture. The open signed-in process is an older pre-fix build, so it cannot verify the Tasks/Jobs disabled state. A separate isolated first-run process now shows the corrected Preflight and Local AI deferred-install screens; it did not register an account or install a model. Operations, History, Settings, Calendar, Budget, and the current Tasks/Jobs states remain pending.
 
 | View | Verified capture |
 | --- | --- |
@@ -87,6 +87,17 @@ The signed-in tour is in progress. Genuine captures cover the Knowledge Library 
 | Tasks and Jobs | [Pre-fix Tasks initialization error](assets/screenshots/signed-in-tour-2026-10-10/tasks-init-error-pre-fix.png); the earlier Tasks/Jobs captures remain historical. Current disabled-state captures are pending. |
 | File/Edit/View/Help menus | [File](assets/screenshots/signed-in-tour-2026-10-10/file-menu.png), [Edit](assets/screenshots/signed-in-tour-2026-10-10/edit-menu.png), [View](assets/screenshots/signed-in-tour-2026-10-10/view-menu.png), [Help](assets/screenshots/signed-in-tour-2026-10-10/help-menu.png). |
 | Fabric operator and runner surfaces | Private development; not shown |
+
+### Corrected first-run setup (isolated current build)
+
+These genuine captures show the corrected deferred-model path in a separate process using temporary configuration and data roots. The recommended local model remains uninstalled, and the guidance says it can be acquired after setup. No account was registered and no credential was entered. The Finish action was not invoked. The optional Cloud AI page showed masked configured-provider states, so it was not retained as a capture.
+
+| Step | Verified capture |
+| --- | --- |
+| Preflight | [Model installation can be deferred](assets/screenshots/current-build-2026-10/setup-09-preflight-deferred-model-current.jpg) — the recommended model is not installed, and setup can continue with the listed limitations. |
+| Providers / Local AI | [Local model remains uninstalled](assets/screenshots/current-build-2026-10/setup-10-local-model-deferred-current.jpg) — the wizard says setup can finish first and Chat stays unavailable until a local model or cloud Chat provider is configured. |
+
+The two captures verify the corrected guidance in the current source build. Finish completion without a model or token is verified by focused tests; this isolated run intentionally stopped before account creation.
 
 <details>
 <summary>Secondary preview: genuine setup screens from an internal build</summary>
@@ -184,7 +195,7 @@ These screens show initialization errors and the blank Work content area before 
 
 | Surface | Screens and relevant dialogs | Verified coverage |
 | --- | --- | --- |
-| First-run setup | Introduction, Preflight, Users/Admin, Storage/Advanced Storage, local workspace and native folder picker, Local AI, Cloud AI, Defaults | 12 historical captures; corrected no-model/no-token flow still needs an isolated current capture. |
+| First-run setup | Introduction, Preflight, Users/Admin, Storage/Advanced Storage, local workspace and native folder picker, Local AI, Cloud AI, Defaults | 12 historical captures remain preserved. Current isolated Preflight and Local AI pages show deferred installation; focused tests verify the Finish contract. Finish was not invoked, and the optional Cloud AI page was not retained because it displayed masked configured-provider states. |
 | Signed-in Chat | Main Chat, Blackboard, Context, Debug, conversation view | Empty shell captured before the current conversation; active conversation capture pending. |
 | Work | Tasks and Jobs | Pre-fix Tasks initialization error captured; current disabled-state captures pending. Earlier Tasks/Jobs failures are historical only. |
 | Work | Calendar and Budget | Capture pending. |
